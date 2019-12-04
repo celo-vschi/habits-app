@@ -6,7 +6,7 @@ import NotFoundPage from '../components/NotFoundPage';
 import LoginPage from '../components/LoginPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-import { AddHabitPage } from '../components/AddHabitPage';
+import AddHabitPage from '../components/AddHabitPage';
 
 export const history = createHistory();
 

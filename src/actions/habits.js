@@ -6,6 +6,7 @@ export const addHabit = (habit) => ({
 });
 
 export const startAddHabit = (habitData = {}) => {
+    console.log("X");
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
         const {

@@ -1,8 +1,9 @@
 import React from 'react';
+import HabitList from './HabitList';
 
 const DashboardPage = () => (
     <div>
-        Dashboard page content
+        <HabitList />
     </div>
 );
 

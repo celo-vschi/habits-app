@@ -10,20 +10,19 @@ export default (state = habitsReducerDefaultState, action) => {
                 ...state,
                 action.habit
             ];
-        // case 'REMOVE_EXPENSE':
-        //     return state.filter(({ id }) => id !== action.id);
-        // case 'EDIT_EXPENSE':
-        //     return state.map((expense) => {
-        //         if (expense.id === action.id) {
-        //             return {
-        //                 ...expense,
-        //                 ...action.updates
-        //             }
-        //         } else {
-        //             return expense;
-        //         }
-        //     });
-
+        case 'REMOVE_HABIT':
+            return state.filter(({ id }) => id !== action.id);
+        case 'EDIT_HABIT':
+            return state.map((habit) => {
+                if (habit.id === action.id) {
+                    return {
+                        ...habit,
+                        ...action.updates
+                    }
+                } else {
+                    return habit;
+                }
+            });
         default:
             return state;
     }

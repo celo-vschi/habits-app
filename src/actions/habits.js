@@ -6,7 +6,6 @@ export const addHabit = (habit) => ({
 });
 
 export const startAddHabit = (habitData = {}) => {
-    console.log("X");
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
         const {
@@ -39,6 +38,37 @@ export const startSetHabits = () => {
             .then((snapshot) => {
                 const habits = buildHabitsArray(snapshot);
                 dispatch(setHabits(habits));
+            });
+    };
+};
+
+export const editHabit = (id, updates) => ({
+    type: 'EDIT_HABIT',
+    id,
+    updates
+});
+
+export const startEditHabit = (id, updates) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/habits/${id}`).update(updates)
+            .then(() => {
+                dispatch(editHabit(id, updates));
+            });
+    };
+};
+
+export const removeHabit = ({ id } = {}) => ({
+    type: 'REMOVE_HABIT',
+    id
+});
+
+export const startRemoveHabit = ({ id } = {}) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/habits/${id}`).remove()
+            .then(() => {
+                dispatch(removeHabit({ id }));
             });
     };
 };

@@ -1,11 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import HabitForm from './HabitForm';
-import { startEditHabit, startRemoveHabit } from '../actions/habits';
+import HabitForm from '../HabitForm';
+import { startEditHabit, startRemoveHabit } from '../../actions/habits';
 
 export class EditHabitPage extends React.Component {
     onSubmit = (habit) => {
-        console.log(habit);
         this.props.startEditHabit(this.props.habit.id, habit);
         this.props.history.push('/');
     };
@@ -16,7 +15,6 @@ export class EditHabitPage extends React.Component {
     };
 
     render() {
-        console.log(this.props);
         return (
             <div>
                 <div className="page-header">

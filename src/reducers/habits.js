@@ -23,6 +23,26 @@ export default (state = habitsReducerDefaultState, action) => {
                     return habit;
                 }
             });
+        case 'MARK_PROGRESS':
+            return state.map((habit) => {
+                let newProgress = action.progress;
+                if (habit.id === action.id) {
+                    if (habit.progress) {
+                        newProgress = {
+                            ...habit.progress,
+                            ...action.progress
+                        };
+                    }
+                    return {
+                        ...habit,
+                        progress: {
+                            ...newProgress
+                        }
+                    }
+                } else {
+                    return habit;
+                }
+            });
         default:
             return state;
     }

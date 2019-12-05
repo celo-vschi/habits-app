@@ -1,4 +1,5 @@
 import database from '../firebase/firebase';
+import habitSelector from '../selectors/habits-per-day';
 
 export const addHabit = (habit) => ({
     type: 'ADD_HABIT',
@@ -34,10 +35,12 @@ export const setHabits = (habits) => ({
 export const startSetHabits = () => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
+        const date = getState().filters.date;
         return database.ref(`users/${uid}/habits`).once('value')
             .then((snapshot) => {
                 const habits = buildHabitsArray(snapshot);
-                dispatch(setHabits(habits));
+                const currentDayHabits = habitSelector(habits, { date });
+                dispatch(setHabits(currentDayHabits));
             });
     };
 };
@@ -72,6 +75,26 @@ export const startRemoveHabit = ({ id } = {}) => {
             });
     };
 };
+
+export const markProgress = (id, progress) => ({
+    type: 'MARK_PROGRESS',
+    id,
+    progress
+})
+
+export const startMarkHabit = ({ id, date, done } = {}) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        return database.ref(`users/${uid}/habits/${id}/progress/${date}`).set({ done })
+            .then(() => {
+                const progressUpdate = {
+                    [date]: { done }
+                };
+                dispatch(markProgress(id, progressUpdate));
+            });
+    };
+};
+
 
 const buildHabitsArray = (snapshot) => {
     const habits = [];

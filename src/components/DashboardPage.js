@@ -1,11 +1,11 @@
 import React from 'react';
-import HabitList from './HabitList';
-import { HabitsSummary } from './HabitsSummary';
+import HabitsSummary from './HabitsSummary';
+import HabitListCheck from './HabitListCheck';
 
 const DashboardPage = () => (
     <div>
         <HabitsSummary />
-        <HabitList />
+        <HabitListCheck />
     </div>
 );
 

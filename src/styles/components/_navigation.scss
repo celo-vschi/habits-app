@@ -3,6 +3,13 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    div {
+        padding: $s-size $l-size $s-size $l-size;
+    }
+    a {
+        display: block;
+        cursor: pointer;
+    }
 }   
 
 .summary-navigation-button {

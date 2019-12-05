@@ -10,20 +10,19 @@ export class HabitsSummary extends React.Component {
             <div className="page-header" >
                 <div className="content-container">
                     <div className="summary-navigation">
-                        <button
-                            className="summary-navigation-button"
-                            onClick={this.props.decrementDate}>
-                            <GoChevronLeft size={32} />
-                        </button>
+                        <a onClick={this.props.decrementDate}>
+                            <div>
+                                <GoChevronLeft size={32} />
+                            </div>
+                        </a>
                         <h1 className="page-header__title">
                             Viewing habits for <span>{this.props.prettyDate}</span>
                         </h1>
-                        <button
-                            className="summary-navigation-button"
-                            onClick={this.props.incrementDate}>
-                            <GoChevronRight size={32} />
-                        </button>
-
+                        <a onClick={this.props.incrementDate}>
+                            <div>
+                                <GoChevronRight size={32} />
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>

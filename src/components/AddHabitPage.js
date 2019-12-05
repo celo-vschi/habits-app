@@ -6,7 +6,7 @@ import { startAddHabit } from '../actions/habits';
 export class AddHabitPage extends React.Component {
     onSubmit = (habit) => {
         this.props.startAddHabit(habit);
-        this.props.history.push('/');
+        this.props.history.push('/edit');
     };
 
     render() {

@@ -1,30 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import * as utils from '../utils/utils';
+import { GoChevronLeft, GoChevronRight } from "react-icons/go";
 import { incrementDate, decrementDate } from '../actions/filters';
 
 export class HabitsSummary extends React.Component {
-    incrementDateOnClick = ({ date }) => {
-        this.props.incrementDate();
-    };
-
-    decrementDateOnClick = () => {
-        this.props.decrementDate();
-    };
-
     render() {
         return (
             <div className="page-header" >
                 <div className="content-container">
-                    <h1 className="page-header__title">
-                        <span>{this.props.date}</span>
-                    </h1>
-                    <div className="page-header__actions">
-                        <Link className="button" to="/create">Add Habit</Link>
-                    </div>
-                    <div>
-                        <button onClick={this.incrementDateOnClick}>+1</button>
-                        <button onClick={this.decrementDateOnClick}>-1</button>
+                    <div className="summary-navigation">
+                        <button
+                            className="summary-navigation-button"
+                            onClick={this.props.decrementDate}>
+                            <GoChevronLeft size={32} />
+                        </button>
+                        <h1 className="page-header__title">
+                            Viewing habits for <span>{this.props.prettyDate}</span>
+                        </h1>
+                        <button
+                            className="summary-navigation-button"
+                            onClick={this.props.incrementDate}>
+                            <GoChevronRight size={32} />
+                        </button>
+
                     </div>
                 </div>
             </div>
@@ -34,7 +33,8 @@ export class HabitsSummary extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        date: state.filters.date
+        date: state.filters.date,
+        prettyDate: utils.prettifyDate(state.filters.date)
     };
 };
 

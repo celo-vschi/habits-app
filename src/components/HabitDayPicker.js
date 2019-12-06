@@ -1,6 +1,8 @@
 import React from 'react';
+import moment from 'moment';
 import { connect } from 'react-redux';
 import DayPicker from 'react-day-picker';
+import { setDate } from '../actions/filters';
 import * as utils from '../utils/utils';
 
 export class HabitDayPicker extends React.Component {
@@ -10,18 +12,18 @@ export class HabitDayPicker extends React.Component {
 
     handleDayClick = (day, { selected }) => {
         this.setState(() => ({ selectedDay: selected ? undefined : day }));
-    };
-
-    modifiers = {
-        green: this.props.calendarData.green,
-        orange: this.props.calendarData.orange,
-        red: this.props.calendarData.red
+        const date = moment(day).format('YYYY-MM-DD');
+        this.props.setDate(date);
     };
 
     render() {
         return (
             <DayPicker
-                modifiers={this.modifiers}
+                modifiers={{
+                    green: this.props.calendarData.green,
+                    orange: this.props.calendarData.orange,
+                    red: this.props.calendarData.red
+                }}
                 selectedDays={this.state.selectedDay}
                 onDayClick={this.handleDayClick}
                 onDayclassName="calendar" />
@@ -35,4 +37,8 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(HabitDayPicker);
+const mapDispatchToProps = (dispatch) => ({
+    setDate: (date) => dispatch(setDate(date))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HabitDayPicker);

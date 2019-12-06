@@ -16,9 +16,9 @@ export class HabitListItemCheck extends React.Component {
     }
     render() {
         return (
-            <a onClick={this.props.done ? this.markUndone : this.markDone} className="habit-check-container">
+            <a onClick={this.props.done ? this.markUndone : this.markDone} className="habit-check-a">
                 <div className={this.props.done ? "habit-check-done" : "habit-check-undone"}>
-                    <h3 >{this.props.name}</h3>
+                    <p>{this.props.name}</p>
                 </div>
             </a>
         );

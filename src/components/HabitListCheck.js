@@ -5,7 +5,7 @@ import HabitListItemCheck from './HabitListItemCheck';
 
 export const HabitList = (props) => (
     <div className="content-container">
-        <div className="list-body">
+        <div className="habit-check-container">
             {props.habits.map((habit) => (
                 <HabitListItemCheck key={habit.id} {...habit} date={props.date} props={props} />
             ))}

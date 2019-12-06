@@ -6,12 +6,12 @@ import { startEditHabit, startRemoveHabit } from '../../actions/habits';
 export class EditHabitPage extends React.Component {
     onSubmit = (habit) => {
         this.props.startEditHabit(this.props.habit.id, habit);
-        this.props.history.push('/');
+        this.props.history.push('/edit');
     };
 
     onClick = () => {
         this.props.startRemoveHabit(this.props.habit.id);
-        this.props.history.push('/');
+        this.props.history.push('/edit');
     };
 
     render() {

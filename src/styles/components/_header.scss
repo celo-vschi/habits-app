@@ -9,10 +9,14 @@
     padding: $s-size 0;
 }
 
+.header__item {
+    display:flex;
+}
+
 .header__title {
     color: white;
     text-decoration: none;
     h1 {
-        margin: 0;
+        margin: 0 $l-size 0 0;
     }
 }

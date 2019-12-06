@@ -16,13 +16,11 @@ export class HabitListItemCheck extends React.Component {
     }
     render() {
         return (
-            <div>
-                <h3>{this.props.name}</h3>
-                {
-                    this.props.done ? (<button onClick={this.markUndone}>mark as undone</button>) : (
-                        <button onClick={this.markDone}>mark as done</button>)
-                }
-            </div>
+            <a onClick={this.props.done ? this.markUndone : this.markDone} className="habit-check-container">
+                <div className={this.props.done ? "habit-check-done" : "habit-check-undone"}>
+                    <h3 >{this.props.name}</h3>
+                </div>
+            </a>
         );
     }
 }

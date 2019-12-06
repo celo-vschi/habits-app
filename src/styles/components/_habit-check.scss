@@ -1,0 +1,13 @@
+.habit-check-container {
+    display: block;
+    cursor:pointer;
+}
+
+.habit-check-done {
+    background-color: #d4edda;
+    color: #155724;
+}
+.habit-check-undone {
+    color: #721c24;
+    background-color: #f8d7da;
+}

@@ -9,6 +9,7 @@ import { startSetHabits } from './actions/habits';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
+import 'react-day-picker/lib/style.css';
 import { firebase } from './firebase/firebase';
 
 const store = configureStore();

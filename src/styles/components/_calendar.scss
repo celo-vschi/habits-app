@@ -1,0 +1,23 @@
+.DayPicker {
+    font-size: 2rem !important;
+}
+
+.DayPicker-Day--green {
+    color: '#155724';
+    background-color: #d4edda;
+}
+
+.DayPicker-Day--orange {
+    color: '#856404';
+    background-color: #fff3cd;
+}
+
+.DayPicker-Day--red {
+    color: #721c24;
+    background-color: #f8d7da;
+}
+
+.calendar-container {
+    display: flex;
+    justify-content: center;
+}

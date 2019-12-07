@@ -33,7 +33,9 @@ export class HabitListItemCheck extends React.Component {
                         onChange={this.handleChange}
                     />
                     <span className="checkbox-checkmark"></span>
-                    <p className="habit__text">{this.props.name}</p>
+                    <p className="habit__text">
+                        {this.props.done ? (<strike>{this.props.name}</strike>) : (this.props.name)}
+                    </p>
                 </label>
             </div>
         );

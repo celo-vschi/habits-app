@@ -22,11 +22,19 @@
     display: flex;
 
     > * {
-        margin: $s-size;
+        margin: $s-size ;
     }
     @media(min-width: $desktop-breakpoint) {
         > * {
             padding-right: $s-size;
         }
     }
+}
+
+.widget__message {
+    color: $off-white;
+    margin: 0;
+    padding: $l-size;
+    text-align: center;
+    text-decoration: none;
 }

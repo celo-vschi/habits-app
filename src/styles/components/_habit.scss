@@ -1,0 +1,19 @@
+.habit {
+    align-items: center;
+    border-bottom: 1px solid lighten($light-blue, 10%);
+    display: flex;
+    padding: $l-size $m-size;
+}
+
+.habit__last {
+    @extend .habit;
+    border: none;
+}
+
+.habit__text {
+    color: white;
+    font-weight: 500;
+    font-size: 2rem;
+    margin: 0;
+    word-break: break-all;
+}

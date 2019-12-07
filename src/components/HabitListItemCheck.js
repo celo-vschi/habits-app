@@ -14,13 +14,25 @@ export class HabitListItemCheck extends React.Component {
         const date = this.props.date;
         this.props.startMarkHabit(id, date, false);
     }
+    handleChange = (e) => {
+        const checked = e.target.value;
+        if (checked === 'true') {
+            this.markUndone();
+        } else {
+            this.markDone();
+        }
+    }
     render() {
         return (
-            <a onClick={this.props.done ? this.markUndone : this.markDone} className="habit-check-a">
-                <div className={this.props.done ? "habit-check-done" : "habit-check-undone"}>
-                    <p>{this.props.name}</p>
-                </div>
-            </a>
+            <div className={this.props.last ? "habit habit__last" : "habit"}>
+                <input
+                    type="checkbox"
+                    checked={this.props.done}
+                    value={this.props.done}
+                    onChange={this.handleChange}
+                />
+                <p className="habit__text">{this.props.name}</p>
+            </div>
         );
     }
 }

@@ -1,19 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import selectHabits from '../selectors/habits-per-day';
 import HabitListItemCheck from './HabitListItemCheck';
 import HabitDayPicker from './HabitDayPicker';
 
-export const HabitList = (props) => (
+export const HabitListCheck = (props) => (
     <div className="content-container">
-        <div className="habit-check-container">
-            {props.habits.map((habit) => (
-                <HabitListItemCheck key={habit.id} {...habit} date={props.date} props={props} />
-            ))}
+        <div className="widget">
+
+            {props.habits.length > 0 ?
+                (props.habits.map((habit, i) => (
+                    <HabitListItemCheck key={habit.id} last={props.habits.length === i + 1} {...habit} date={props.date} props={props} />
+                ))) : (
+                    <Link className="button--link" to="/create">
+                        <p className="widget__message">You have no habits. Click here to add a habit.</p>
+                    </Link>
+                )}
+
         </div>
-        <div className="calendar-container">
-            <HabitDayPicker />
-        </div>
+        <HabitDayPicker />
     </div>
 );
 
@@ -24,4 +30,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(HabitList);
+export default connect(mapStateToProps)(HabitListCheck);

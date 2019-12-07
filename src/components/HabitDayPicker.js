@@ -25,6 +25,7 @@ export class HabitDayPicker extends React.Component {
                     red: this.props.calendarData.red
                 }}
                 selectedDays={this.state.selectedDay}
+                firstDayOfWeek={1}
                 onDayClick={this.handleDayClick}
                 onDayclassName="calendar" />
         );

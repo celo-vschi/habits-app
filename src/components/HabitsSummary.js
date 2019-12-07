@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import * as utils from '../utils/utils';
-import { GoChevronLeft, GoChevronRight } from "react-icons/go";
+import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import { incrementDate, decrementDate } from '../actions/filters';
 
 export class HabitsSummary extends React.Component {
@@ -9,16 +10,19 @@ export class HabitsSummary extends React.Component {
         return (
             <div className="page-header" >
                 <div className="content-container">
-                    <div className="summary-navigation">
-                        <a onClick={this.props.decrementDate}>
-                            <div><GoChevronLeft size={32} /></div>
-                        </a>
-                        <h1 className="page-header__title">
-                            Viewing habits for <span>{this.props.prettyDate}</span>
-                        </h1>
-                        <a onClick={this.props.incrementDate}>
-                            <div><GoChevronRight size={32} /></div>
-                        </a>
+                    <div className="widget-header">
+                        <div className="widget-header-item">
+                            <Link className="button--link" to="/edit">Habit List</Link>
+                        </div>
+                        <div className="widget-header-item">
+                            <h3>{this.props.prettyDate}</h3>
+                            <button className="button--link" onClick={this.props.decrementDate}>
+                                <AiFillCaretLeft size={25} />
+                            </button>
+                            <button className="button--link" onClick={this.props.incrementDate}>
+                                <AiFillCaretRight size={25} />
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -1,0 +1,32 @@
+.widget {
+    background: $light-blue;
+    margin-bottom: $xl-size;
+}
+
+.widget-header {
+    align-items: center;
+    background: $blue;
+    color: $off-white;
+    display: flex;
+    justify-content: space-between;
+    
+    flex-direction: column;
+    @media(min-width: $desktop-breakpoint) {
+        flex-direction: row-reverse;
+    }
+
+    padding: $s-size $m-size;
+}
+
+.widget-header-item {
+    display: flex;
+
+    > * {
+        margin: $s-size;
+    }
+    @media(min-width: $desktop-breakpoint) {
+        > * {
+            padding-right: $s-size;
+        }
+    }
+}

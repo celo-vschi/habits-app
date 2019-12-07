@@ -1,5 +1,11 @@
 .header {
-    background: $dark-blue;
+    background: $off-black;
+    padding: $s-size 0;
+
+    margin-bottom: $m-size;
+    @media(min-width: $desktop-breakpoint) {
+        margin-bottom: $xl-size;
+    }
 }
 
 .header__content {
@@ -9,14 +15,22 @@
     padding: $s-size 0;
 }
 
-.header__item {
-    display:flex;
-}
-
 .header__title {
     color: white;
     text-decoration: none;
     h1 {
-        margin: 0 $l-size 0 0;
+        margin: 0;
     }
+}
+
+.header__button {
+    background: none;
+    border: none;
+    color: $off-white;
+    display: inline-block;
+    font-size: $font-size-large;
+    font-weight: 300;
+    line-height: 1;
+    padding: $s-size;
+    text-decoration: none;
 }

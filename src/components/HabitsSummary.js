@@ -4,27 +4,27 @@ import { Link } from 'react-router-dom';
 import * as utils from '../utils/utils';
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import { incrementDate, decrementDate } from '../actions/filters';
+import HabitListCheck from './HabitListCheck';
 
 export class HabitsSummary extends React.Component {
     render() {
         return (
-            <div className="page-header" >
-                <div className="content-container">
-                    <div className="widget-header">
-                        <div className="widget-header-item">
-                            <Link className="button--link" to="/edit">Habit List</Link>
-                        </div>
-                        <div className="widget-header-item">
-                            <h3>{this.props.prettyDate}</h3>
-                            <button className="button--link" onClick={this.props.decrementDate}>
-                                <AiFillCaretLeft size={25} />
-                            </button>
-                            <button className="button--link" onClick={this.props.incrementDate}>
-                                <AiFillCaretRight size={25} />
-                            </button>
-                        </div>
+            <div className="dashboard-item__left">
+                <div className="widget-header">
+                    <div className="widget-header-item">
+                        <Link className="button--link" to="/edit">Habit List</Link>
+                    </div>
+                    <div className="widget-header-item">
+                        <h3>{this.props.prettyDate}</h3>
+                        <button className="button--link" onClick={this.props.decrementDate}>
+                            <AiFillCaretLeft size={25} />
+                        </button>
+                        <button className="button--link" onClick={this.props.incrementDate}>
+                            <AiFillCaretRight size={25} />
+                        </button>
                     </div>
                 </div>
+                <HabitListCheck />
             </div>
         )
     }

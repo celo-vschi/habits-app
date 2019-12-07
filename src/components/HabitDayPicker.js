@@ -18,15 +18,17 @@ export class HabitDayPicker extends React.Component {
 
     render() {
         return (
-            <DayPicker
-                modifiers={{
-                    green: this.props.calendarData.green,
-                    orange: this.props.calendarData.orange,
-                    red: this.props.calendarData.red
-                }}
-                selectedDays={this.state.selectedDay}
-                onDayClick={this.handleDayClick}
-                onDayclassName="calendar" />
+            <div className="dashboard-item__right">
+                <DayPicker
+                    modifiers={{
+                        green: this.props.calendarData.green,
+                        orange: this.props.calendarData.orange,
+                        red: this.props.calendarData.red
+                    }}
+                    selectedDays={this.state.selectedDay}
+                    onDayClick={this.handleDayClick}
+                    onDayclassName="calendar" />
+            </div>
         );
     }
 };

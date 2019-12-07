@@ -1,0 +1,22 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    @media (min-width: $desktop-breakpoint) {
+        justify-content: space-between;
+        flex-direction: row;
+    }
+}
+
+.dashboard-item {
+    flex-grow: 1;
+}
+
+.dashboard-item__left {
+    @extend .dashboard-item;
+    margin-right: $l-size;
+}
+
+.dashboard-item__right {
+    @extend .dashboard-item;
+    display: grid;
+}

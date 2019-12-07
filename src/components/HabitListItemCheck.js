@@ -34,7 +34,7 @@ export class HabitListItemCheck extends React.Component {
                     />
                     <span className="checkbox-checkmark"></span>
                     <p className="habit__text">
-                        {this.props.done ? (<strike>{this.props.name}</strike>) : (this.props.name)}
+                        {this.props.done ? (<s>{this.props.name}</s>) : (this.props.name)}
                     </p>
                 </label>
             </div>

@@ -14,7 +14,7 @@
 
 .dashboard-item__left {
     @extend .dashboard-item;
-    padding: $l-size;
+    padding: $s-size;
     padding-bottom: 0;
     @media (min-width: $desktop-breakpoint) {
         margin-right: $l-size;

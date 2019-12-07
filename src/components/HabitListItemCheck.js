@@ -25,13 +25,16 @@ export class HabitListItemCheck extends React.Component {
     render() {
         return (
             <div className={this.props.last ? "habit habit__last" : "habit"}>
-                <input
-                    type="checkbox"
-                    checked={this.props.done}
-                    value={this.props.done}
-                    onChange={this.handleChange}
-                />
-                <p className="habit__text">{this.props.name}</p>
+                <label className="checkbox-container">
+                    <input
+                        type="checkbox"
+                        checked={this.props.done}
+                        value={this.props.done}
+                        onChange={this.handleChange}
+                    />
+                    <span className="checkbox-checkmark"></span>
+                    <p className="habit__text">{this.props.name}</p>
+                </label>
             </div>
         );
     }

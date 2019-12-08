@@ -6,3 +6,12 @@
     text-decoration: none;
     line-height: 1;
 }
+
+.button {
+    background: $purple;
+    border: none;
+    border-bottom: .3rem solid darken($purple, 10%);
+    color:white;
+    font-weight: 500;
+    padding: $s-size;
+}

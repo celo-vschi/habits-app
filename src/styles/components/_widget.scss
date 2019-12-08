@@ -26,7 +26,7 @@
     }
     @media(min-width: $desktop-breakpoint) {
         > * {
-            padding-right: $s-size;
+            // padding-right: $s-size;
         }
     }
 }
@@ -37,4 +37,11 @@
     padding: $l-size;
     text-align: center;
     text-decoration: none;
+}
+
+.widget-error {
+    color: $off-white;
+    font-style: italic;
+    margin: $m-size 0 0 0;
+    padding: 0 $m-size;
 }

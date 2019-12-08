@@ -11,15 +11,8 @@ export class AddHabitPage extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className="page-header">
-                    <div className="content-container">
-                        <h1 className="page-header__title"> Add Habit </h1>
-                    </div>
-                </div>
-                <div className="content-container">
-                    <HabitForm onSubmit={this.onSubmit} />
-                </div>
+            <div className="content-container">
+                <HabitForm title="Add Habit" onSubmit={this.onSubmit} />
             </div>
         );
     }

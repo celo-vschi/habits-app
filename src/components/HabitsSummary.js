@@ -12,7 +12,9 @@ export class HabitsSummary extends React.Component {
             <div className="dashboard-item__left">
                 <div className="widget-header">
                     <div className="widget-header-item">
-                        <Link className="button--link" to="/edit">Habit List</Link>
+                        <Link to="/edit">
+                            <button className="button">Habit List</button>
+                        </Link>
                     </div>
                     <div className="widget-header-item">
                         <h3>{this.props.prettyDate}</h3>

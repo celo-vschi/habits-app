@@ -4,11 +4,15 @@ import HabitList from './HabitList';
 
 const EditHabitsPage = () => (
     <div>
-        <div className="page-header">
-            <div className="content-container">
-                <h1 className="page-header__title"> Habit List </h1>
-                <div className="page-header__actions">
-                    <Link className="button" to="/create">Add Habit</Link>
+        <div className="content-container">
+            <div className="widget-header">
+                <div className="widget-header-item">
+                    <Link to="/create">
+                        <button className="button">Add Habit</button>
+                    </Link>
+                </div>
+                <div className="widget-header-item">
+                    <h3> Habit List </h3>
                 </div>
             </div>
         </div>

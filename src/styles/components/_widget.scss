@@ -42,6 +42,7 @@
 .widget-error {
     color: $off-white;
     font-style: italic;
-    margin: $m-size 0 0 0;
-    padding: 0 $m-size;
+    margin: 0;
+    padding: $m-size;
+    padding-top: 0;
 }

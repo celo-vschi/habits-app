@@ -17,7 +17,7 @@ export class HabitsSummary extends React.Component {
                         </Link>
                     </div>
                     <div className="widget-header-item">
-                        <h3>{this.props.prettyDate}</h3>
+                        <h3>{this.props.prettyDate}<span> [{this.props.dailySummary}]</span></h3>
                         <button className="button--link" onClick={this.props.decrementDate}>
                             <AiFillCaretLeft size={25} />
                         </button>
@@ -35,7 +35,8 @@ export class HabitsSummary extends React.Component {
 const mapStateToProps = (state) => {
     return {
         date: state.filters.date,
-        prettyDate: utils.prettifyDate(state.filters.date)
+        prettyDate: utils.prettifyDate(state.filters.date),
+        dailySummary: utils.getDailySummary(state.habits, state.filters.date)
     };
 };
 

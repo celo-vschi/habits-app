@@ -64,6 +64,12 @@ export const getCalendarData = (habits) => {
     return calendarData;
 };
 
+export const getDailySummary = (habits, date) => {
+    const all = habits.length;
+    const finished = habitsDone(habits, date);
+    return `${finished}/${all}`;
+}
+
 const userStartedTrakingHabits = (habits, date) => {
     let alreadyTrekking = false;
     habits.forEach((habit) => {

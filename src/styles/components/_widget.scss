@@ -24,6 +24,13 @@
     > * {
         margin: $s-size ;
     }
+
+    h3 {
+        span {
+            color: $purple;
+        }
+    }
+
     @media(min-width: $desktop-breakpoint) {
         > * {
             // padding-right: $s-size;

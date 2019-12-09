@@ -1,0 +1,23 @@
+.login {
+    align-items: center;
+    color: $off-white;
+    display: flex;
+
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.login__box {
+    background: $blue;
+    border-radius: 3px;
+    padding: $l-size $m-size;
+    text-align: center;
+    width: 25rem;
+}
+
+.login__title {
+    color: white;
+    margin: 0 0 $m-size 0;
+    line-height: 1;
+}

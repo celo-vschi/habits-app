@@ -1,19 +1,17 @@
-.button {
-    background: $blue;
-    border: none;
-    color: white;
-    display: inline-block;
-    font-size: $font-size-large;
-    font-weight: 300;
-    line-height: 1;
-    padding: $s-size;
-    text-decoration: none;
-}
-
-.button--link {
+ .button--link {
     background: none;
+    border: none;
+    color: $off-white;
+    padding: 0;
+    text-decoration: none;
+    line-height: 1;
 }
 
-.button--secondary {
-    background: #888;
+.button {
+    background: $purple;
+    border: none;
+    border-bottom: .3rem solid darken($purple, 10%);
+    color:white;
+    font-weight: 700;
+    padding: $s-size;
 }

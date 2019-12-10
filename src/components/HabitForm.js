@@ -29,18 +29,26 @@ export default class HabitForm extends React.Component {
 
     render() {
         return (
-            <form className="form" onSubmit={this.onSubmit}>
-                {this.state.error && <p className="form__error">{this.state.error}</p>}
-                <input
-                    type="text"
-                    className="text-input"
-                    placeholder="e.g. Drink more water"
-                    autoFocus
-                    value={this.state.name}
-                    onChange={this.onNameChange}
-                />
-                <div>
+            <form onSubmit={this.onSubmit}>
+                <div className="widget-header">
                     <button className="button">Save Habit</button>
+                    <div className="widget-header-item">
+                        <h3> {this.props.title} </h3>
+                    </div>
+                </div>
+                <div className="widget">
+                    <input
+                        type="text"
+                        className="habit-input"
+                        placeholder="e.g. Drink more water"
+                        autoFocus
+                        value={this.state.name}
+                        onChange={this.onNameChange}
+                    />
+                    {this.state.error && <p className="widget-error">{this.state.error}</p>}
+                    <div>
+
+                    </div>
                 </div>
             </form>
         )

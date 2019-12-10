@@ -4,16 +4,18 @@ import HabitListItem from './HabitListItem';
 
 export const HabitList = (props) => (
     <div className="content-container">
-        <div className="list-header">Habits</div>
-        <div className="list-body">
+        <div className="widget">
             {
                 props.habits.length === 0 ? (
-                    <div className="list-item list-item--message">
-                        <span>No habits</span>
-                    </div>
+                    <p className="widget__message">No habits</p>
                 ) : (
-                        props.habits.map((habit) => (
-                            <HabitListItem key={habit.id} {...habit} props={props} />
+                        props.habits.map((habit, i) => (
+                            <HabitListItem
+                                last={props.habits.length === i + 1}
+                                key={habit.id}
+                                {...habit}
+                                props={props}
+                            />
                         ))
                     )
             }

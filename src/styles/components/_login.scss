@@ -1,22 +1,23 @@
-.box-layout {
+.login {
     align-items: center;
-    background: url('/images/bg.jpg');
-    background-size: cover;
+    color: $off-white;
     display: flex;
+
     justify-content: center;
     height: 100vh;
     width: 100vw;
 }
 
-.box-layout__box {
-    background: fade-out(white, .15);
+.login__box {
+    background: $blue;
     border-radius: 3px;
     padding: $l-size $m-size;
     text-align: center;
     width: 25rem;
 }
 
-.box-layout__title {
+.login__title {
+    color: white;
     margin: 0 0 $m-size 0;
     line-height: 1;
 }

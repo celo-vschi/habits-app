@@ -1,0 +1,33 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @media (min-width: $desktop-breakpoint) {
+        justify-content: space-between;
+        flex-direction: row;
+    }
+}
+
+.dashboard-item {
+    flex-grow: 1;
+}
+
+.dashboard-item__left {
+    @extend .dashboard-item;
+    padding: $s-size;
+    padding-bottom: 0;
+    @media (min-width: $desktop-breakpoint) {
+        margin-right: $l-size;
+        padding: 0;
+    }
+}
+
+.dashboard-item__right {
+    @extend .dashboard-item;
+    margin-bottom: $xl-size;
+    align-self: center;
+    @media (min-width: $desktop-breakpoint) {
+        align-self: flex-start;
+        display: grid;
+    }
+}

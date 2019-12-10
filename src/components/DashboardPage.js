@@ -1,11 +1,11 @@
 import React from 'react';
+import HabitDayPicker from './HabitDayPicker';
 import HabitsSummary from './HabitsSummary';
-import HabitListCheck from './HabitListCheck';
 
 const DashboardPage = () => (
-    <div>
+    <div className="content-container dashboard-container">
         <HabitsSummary />
-        <HabitListCheck />
+        <HabitDayPicker />
     </div>
 );
 

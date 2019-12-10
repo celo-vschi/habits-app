@@ -28,7 +28,7 @@ export class HabitDayPicker extends React.Component {
                 firstDayOfWeek={1}
                 onDayClick={this.handleDayClick}
                 onDayclassName="calendar" />
-        );
+
     }
 };
 

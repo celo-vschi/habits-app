@@ -1,0 +1,37 @@
+.habit {
+    justify-content: space-between;
+    border-bottom: 1px solid lighten($light-blue, 10%);
+    display: flex;
+    padding: $m-size;
+    a {
+        text-decoration: none;
+    }
+}
+
+.habit__last {
+    @extend .habit;
+    border: none;
+}
+
+.habit__text {
+    color: white;
+    font-weight: 500;
+    font-size: 2rem;
+    margin: 0;
+    word-break: break-all;
+    padding-left: $m-size;
+    padding-right: $l-size;
+}
+
+.habit__right {
+    padding-right: $m-size;
+}
+
+.habit-input {
+    background: $dark-blue;
+    border: none;
+    border-bottom: .3rem solid darken($dark-blue, 10%);
+    color: $off-white;
+    margin: $m-size;
+    padding: $s-size;
+}

@@ -8,8 +8,8 @@ export const PublicRoute = ({ isAuthenticated, component: Component, ...rest }) 
     )} />
 );
 
-const mapStateToPros = (state) => ({
+const mapStateToProps = (state) => ({
     isAuthenticated: !!state.auth.uid
 });
 
-export default connect(mapStateToPros)(PublicRoute);
+export default connect(mapStateToProps)(PublicRoute);

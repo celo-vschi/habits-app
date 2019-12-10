@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { startMarkHabit } from '../actions/habits';
+import * as utils from '../utils/utils';
 
 export class HabitListItemCheck extends React.Component {
     markDone = () => {
@@ -36,6 +37,9 @@ export class HabitListItemCheck extends React.Component {
                     <p className="habit__text">
                         {this.props.done ? (<s>{this.props.name}</s>) : (this.props.name)}
                     </p>
+                    <span className="habit__subtext">
+                        {this.props.streak}
+                    </span>
                 </label>
             </div>
         );
@@ -46,4 +50,8 @@ const mapDispatchToProps = (dispatch) => ({
     startMarkHabit: (id, date, done) => dispatch(startMarkHabit({ id, date, done }))
 });
 
-export default connect(undefined, mapDispatchToProps)(HabitListItemCheck);
+const mapStateToProps = (state, props) => ({
+    streak: utils.getStreakText(state.habits, props.id)
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HabitListItemCheck);

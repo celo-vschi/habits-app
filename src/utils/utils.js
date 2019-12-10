@@ -30,7 +30,7 @@ export const getCalendarData = (habits) => {
 
     let startedTrackingHabits = false;
     while (checkingDay.isBefore(today, 'day')) {
-        const date = checkingDay.format('YYYY-MM-DD');
+        const date = checkingDay.format(PATTERN);
 
         if (startedTrackingHabits || userStartedTrakingHabits(habits, date)) {
             startedTrackingHabits = true;
@@ -84,7 +84,7 @@ const userStartedTrakingHabits = (habits, date) => {
 const habitsDone = (habits, date) => {
     let habitsDone = 0
     habits.forEach((habit) => {
-        if (habit.progress && habit.progress[date] && habit.progress[date].done === true) {
+        if (habitDone(habit, date)) {
             habitsDone++;
         }
     });
@@ -92,3 +92,48 @@ const habitsDone = (habits, date) => {
     return habitsDone;
 }
 
+const habitDone = (habit, date) => (
+    habit.progress && habit.progress[date] && habit.progress[date].done === true
+);
+
+export const getStreakText = (habits, id) => {
+    let streak = 0;
+    habits.forEach((habit) => {
+
+        if (habit.id === id) {
+            let now = moment();
+            let date = now.format(PATTERN);
+            if (habitDone(habit, date)) {
+                while (habitDone(habit, date)) {
+                    streak++;
+                    now.subtract(1, 'days');
+                    date = now.format(PATTERN);
+                }
+            } else {
+                now.subtract(1, 'days');
+                date = now.format(PATTERN);
+                if (habitDone(habit, date)) {
+                    while (habitDone(habit, date)) {
+                        streak++;
+                        now.subtract(1, 'days');
+                        date = now.format(PATTERN);
+                    }
+                } else {
+                    while (!habitDone(habit, date)) {
+                        streak--;
+                        now.subtract(1, 'days');
+                        date = now.format(PATTERN);
+                    }
+                }
+            }
+        }
+    });
+    return getStreakFormattedText(streak);
+}
+
+const getStreakFormattedText = (streak) => {
+    const word = streak > 0 ? 'streak' : 'miss';
+    const day = streak === 1 || streak === -1 ? 'day' : 'days';
+    streak = streak < 0 ? -streak : streak;
+    return `${streak} ${day} ${word}`;
+}

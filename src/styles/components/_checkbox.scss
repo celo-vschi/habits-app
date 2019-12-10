@@ -4,7 +4,6 @@
     position: relative;
     padding-left: 35px;
     cursor: pointer;
-    font-size: 22px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -28,6 +27,7 @@
     height: 25px;
     width: 25px;
     background-color: $dark-blue;
+    margin-top: 9px;
   }
   
   /* On mouse-over, add a grey background color */

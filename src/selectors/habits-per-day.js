@@ -1,11 +1,18 @@
 export default (habits, { date }) => {
-    const selectedHabits = [];
+    const doneHabits = [];
+    const notDoneHabits = [];
     habits.forEach((habit) => {
         let done = false;
         if (habit.progress && habit.progress[date]) {
             done = !!habit.progress[date].done;
         }
-        selectedHabits.push({ ...habit, done });
+
+        if (done) {
+            doneHabits.push({ ...habit, done });
+        } else {
+            notDoneHabits.push({ ...habit, done });
+        }
+
     });
-    return selectedHabits;
+    return notDoneHabits.concat(doneHabits);
 };

@@ -1,12 +1,10 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { startRemoveHabit } from '../../actions/habits';
 
-export class HabitListItem extends React.Component {
-    onClick = () => {
-        this.props.startRemoveHabit(this.props.id);
-    };
+export default class HabitListItem extends React.Component {
+    setModalDataInternal = () => {
+        this.props.setModalData(this.props.id);
+    }
 
     render() {
         const last = this.props.last;
@@ -20,15 +18,9 @@ export class HabitListItem extends React.Component {
                     </p>
                 </Link>
                 <div className="habit__right">
-                    <button onClick={this.onClick} className="button--link">Remove Habit</button>
+                    <button onClick={this.setModalDataInternal} className="button--link">Remove Habit</button>
                 </div>
             </div>
         );
     }
 };
-
-const mapDispatchToProps = (dispatch) => ({
-    startRemoveHabit: (id) => { dispatch(startRemoveHabit({ id })) }
-});
-
-export default connect(undefined, mapDispatchToProps)(HabitListItem);

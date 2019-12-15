@@ -1,27 +1,58 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import HabitListItem from './HabitListItem';
+import DeleteHabitModal from '../DeleteHabitModal';
+import { startRemoveHabit } from '../../actions/habits';
 
-export const HabitList = (props) => (
-    <div className="content-container">
-        <div className="widget">
-            {
-                props.habits.length === 0 ? (
-                    <p className="widget__message">No habits</p>
-                ) : (
-                        props.habits.map((habit, i) => (
-                            <HabitListItem
-                                last={props.habits.length === i + 1}
-                                key={habit.id}
-                                {...habit}
-                                props={props}
-                            />
-                        ))
-                    )
-            }
-        </div>
-    </div>
-);
+export class HabitList extends React.Component {
+    state = {
+        habitIdToBeDeleted: undefined
+    };
+
+    handleDeleteHabit = () => {
+        const id = this.state.habitIdToBeDeleted;
+        this.props.startRemoveHabit(id);
+        this.handleClearModalData();
+    };
+
+    handleClearModalData = () => {
+        this.setState(() => ({ habitIdToBeDeleted: undefined }));
+    };
+
+    setModalData = (habitIdToBeDeleted) => {
+        this.setState(() => ({ habitIdToBeDeleted }));
+    }
+
+    render() {
+        return (
+            <div className="content-container">
+                <div className="widget">
+                    {
+                        this.props.habits.length === 0 ? (
+                            <p className="widget__message">No habits</p>
+                        ) : (
+                                this.props.habits.map((habit, i) => (
+                                    <HabitListItem
+                                        last={this.props.habits.length === i + 1}
+                                        key={habit.id}
+                                        {...habit}
+                                        setModalData={this.setModalData}
+                                        props={this.props}
+                                    />
+                                ))
+                            )
+                    }
+                </div>
+                <DeleteHabitModal
+                    habitIdToBeDeleted={this.state.habitIdToBeDeleted}
+                    handleClearModalData={this.handleClearModalData}
+                    handleDeleteHabit={this.handleDeleteHabit}
+                />
+            </div>
+        )
+    }
+}
+
 
 const mapStateToProps = (state) => {
     return {
@@ -29,4 +60,8 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps)(HabitList);
+const mapDispatchToProps = (dispatch) => ({
+    startRemoveHabit: (id) => { dispatch(startRemoveHabit({ id })) }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HabitList);

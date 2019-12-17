@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import HabitListItem from './HabitListItem';
 import DeleteHabitModal from '../DeleteHabitModal';
 import { startRemoveHabit } from '../../actions/habits';
+import * as utils from '../../utils/utils';
 
 export class HabitList extends React.Component {
     state = {
@@ -56,7 +57,7 @@ export class HabitList extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        habits: state.habits
+        habits: utils.orderHabits(state.habits)
     };
 };
 

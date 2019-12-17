@@ -132,7 +132,33 @@ const getStreakFormattedText = (streak) => {
     return `${streak} ${day} ${word}`;
 };
 
+export const habitsForDayAndFuture = (habits, { date }) => {
+    const doneHabits = [];
+    const notDoneHabits = [];
+    habits.forEach((habit) => {
+
+        let done = false;
+        if (habitIsStarted(habit, date)) {
+
+            if (habit.progress && habit.progress[date]) {
+                done = !!habit.progress[date].done;
+            }
+
+            if (done) {
+                doneHabits.push({ ...habit, done });
+            } else {
+                notDoneHabits.push({ ...habit, done });
+            }
+
+        } else {
+            notDoneHabits.push({ ...habit, done });
+        }
+    });
+    return notDoneHabits.concat(doneHabits);
+};
+
 export const habitsForDay = (habits, { date }) => {
+    habits = orderHabits(habits);
     const doneHabits = [];
     const notDoneHabits = [];
     habits.forEach((habit) => {
@@ -158,4 +184,17 @@ const habitIsStarted = (habit, date) => {
     const momentStartingDate = moment(habit.startingDate);
     const momentDate = moment(date);
     return momentStartingDate.isSameOrBefore(momentDate);
+}
+
+export const orderHabits = (habits) => {
+    habits.sort((a, b) => {
+        if (a.order === undefined) {
+            return 1;
+        } else if (b.order === undefined) {
+            return -1;
+        } else {
+            return a.order - b.order;
+        }
+    });
+    return habits;
 }

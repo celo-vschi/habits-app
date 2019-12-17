@@ -9,6 +9,13 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
+"@babel/runtime@^7.2.0":
+  version "7.7.6"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.7.6.tgz#d18c511121aff1b4f2cd1d452f1bac9601dd830f"
+  integrity sha512-BWAJxpNVa0QlE5gZdWjSxXtemZyZ9RmrmVozxt3NUXeZhVIJ5ANyqmMc0JDrivBZyxUuQvFxlvH4OWWOogGfUw==
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
 "@types/node@*":
   version "12.12.5"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.5.tgz#66103d2eddc543d44a04394abb7be52506d7f290"
@@ -232,6 +239,11 @@ array-flatten@^2.1.0:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/array-flatten/-/array-flatten-2.1.2.tgz#24ef80a28c1a893617e2149b0c6d0d788293b099"
   integrity sha512-hNfzcOV8W4NdualtqBFPyVO+54DSJuZGY9qT4pRroB6S9e3iiido2ISIC5h9R2sPJ8H3FHCIiEnsv1lPXO3KtQ==
+
+array-move@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/array-move/-/array-move-2.2.1.tgz#16d5b68cb949c43e8821d63e4622f3a3336f254d"
+  integrity sha512-qQpEHBnVT6HAFgEVUwRdHVd8TYJThrZIT5wSXpEUTPwBaYhPLclw12mEpyUvRWVdl1VwPOqnIy6LqTFN3cSeUQ==
 
 array-union@^1.0.1:
   version "1.0.2"
@@ -5383,7 +5395,7 @@ prop-types-exact@^1.2.0:
     object.assign "^4.1.0"
     reflect.ownkeys "^0.2.0"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.6.0, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -5680,6 +5692,15 @@ react-router@^4.2.0:
     path-to-regexp "^1.7.0"
     prop-types "^15.6.1"
     warning "^4.0.1"
+
+react-sortable-hoc@^1.10.1:
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/react-sortable-hoc/-/react-sortable-hoc-1.10.1.tgz#c352f26263acbcff9cf266bc755653a56c983a38"
+  integrity sha512-eVyv5rrK6qY9bG60bboRY78In7OpdRRg+hxp4QMLIjC/UJaFSU7exTYd0764GtXvBqh+b+faYGzren5/ffRYKw==
+  dependencies:
+    "@babel/runtime" "^7.2.0"
+    invariant "^2.2.4"
+    prop-types "^15.5.7"
 
 react-test-renderer@16.0.0:
   version "16.0.0"

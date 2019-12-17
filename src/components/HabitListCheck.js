@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import selectHabits from '../selectors/habits-per-day';
 import HabitListItemCheck from './HabitListItemCheck';
+import * as utils from '../utils/utils';
 
 export const HabitListCheck = (props) => (
     <div className="widget">
@@ -25,7 +25,7 @@ export const HabitListCheck = (props) => (
 
 const mapStateToProps = (state) => {
     return {
-        habits: selectHabits(state.habits, state.filters),
+        habits: utils.habitsForDay(state.habits, state.filters),
         date: state.filters.date
     };
 };

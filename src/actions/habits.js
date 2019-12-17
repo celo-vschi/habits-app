@@ -1,5 +1,5 @@
 import database from '../firebase/firebase';
-import habitSelector from '../selectors/habits-per-day';
+import * as utils from '../utils/utils';
 
 export const addHabit = (habit) => ({
     type: 'ADD_HABIT',
@@ -9,10 +9,13 @@ export const addHabit = (habit) => ({
 export const startAddHabit = (habitData = {}) => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
+
         const {
             name = '',
+            startingDate = utils.getCurrentDate()
         } = habitData;
-        const habit = { name };
+
+        const habit = { name, startingDate };
         return database.ref(`users/${uid}/habits`).push(habit)
             .then((ref) => {
                 dispatch(addHabit({
@@ -35,12 +38,10 @@ export const setHabits = (habits) => ({
 export const startSetHabits = () => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
-        const date = getState().filters.date;
         return database.ref(`users/${uid}/habits`).once('value')
             .then((snapshot) => {
                 const habits = buildHabitsArray(snapshot);
-                const currentDayHabits = habitSelector(habits, { date });
-                dispatch(setHabits(currentDayHabits));
+                dispatch(setHabits(habits));
             });
     };
 };

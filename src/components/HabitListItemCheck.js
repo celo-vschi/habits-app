@@ -51,7 +51,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const mapStateToProps = (state, props) => ({
-    streak: utils.getStreakText(state.habits, props.id)
+    streak: utils.getStreakText(utils.habitsForDay(state.habits, state.filters), props.id)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HabitListItemCheck);

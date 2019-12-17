@@ -33,6 +33,10 @@
 
 .habit__right {
     padding-right: $m-size;
+    .button--link {
+        align-items: center;
+        height: 100%;
+    }
 }
 
 .habit-input {
@@ -40,6 +44,12 @@
     border: none;
     border-bottom: .3rem solid darken($dark-blue, 10%);
     color: $off-white;
-    margin: $m-size;
+    margin-left: $m-size;
     padding: $s-size;
+}
+
+.DayPickerInput {
+    input {
+        @extend .habit-input;
+    }
 }

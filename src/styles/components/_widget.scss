@@ -50,6 +50,19 @@
     color: $off-white;
     font-style: italic;
     margin: 0;
-    padding: $m-size;
-    padding-top: 0;
+    padding-bottom: $m-size;
+}
+
+.widget-input {
+    h3 {
+        color: white;
+        margin: 0;
+        padding: $m-size;
+        padding-bottom: 0;
+        font-weight: 300;
+    }
+}
+
+.widget-input-group {
+    padding-bottom: $l-size;
 }

@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Modal from 'react-modal'
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import { FaCalendar, FaCalendarTimes } from "react-icons/fa";
-import arrayMove from 'array-move';
 import * as utils from '../utils/utils';
 import { startEditHabit } from '../actions/habits';
 
@@ -88,6 +87,20 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
     startEditHabit: (id, order) => { dispatch(startEditHabit(id, order)) }
 });
+
+// from library
+const arrayMoveMutate = (array, from, to) => {
+    const startIndex = to < 0 ? array.length + to : to;
+    const item = array.splice(from, 1)[0];
+    array.splice(startIndex, 0, item);
+};
+
+const arrayMove = (array, from, to) => {
+    array = array.slice();
+    arrayMoveMutate(array, from, to);
+    return array;
+};
+// END OF from library
 
 export default connect(mapStateToProps, mapDispatchToProps)(ReorderHabitsModal);
 

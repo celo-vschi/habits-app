@@ -2,6 +2,11 @@
     opacity: 0;
 }
 
+.ReactModal__Content--after-open {
+    overflow-y: auto;
+    max-height: 100vh;
+}
+
 .ReactModalPortal .ReactModal__Overlay {
     align-items: center;
     display: flex;

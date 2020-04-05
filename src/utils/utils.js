@@ -7,6 +7,7 @@ export const dateToPattern = (date) => (moment(date).format(PATTERN));
 export const patternToDate = (pattern) => (moment(pattern).toDate());
 
 export const getCurrentDate = () => (moment().format(PATTERN));
+export const getNextMonth = () => (moment().subtract(1, 'months'));
 
 export const prettifyDate = (date) => (
     moment(date, PATTERN).format(PRETTY_PATTERN)

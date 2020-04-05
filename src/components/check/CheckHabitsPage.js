@@ -1,34 +1,26 @@
 import React from 'react';
+import moment from 'moment';
 import DayPicker, { DateUtils } from 'react-day-picker';
+import * as utils from '../../utils/utils';
 
 
 export default class CheckHabitsPage extends React.Component {
-    static defaultProps = {
-        numberOfMonths: 2,
+    state = {
+        from: undefined,
+        to: undefined
     };
 
-    constructor(props) {
-        super(props);
-        this.handleDayClick = this.handleDayClick.bind(this);
-        this.handleResetClick = this.handleResetClick.bind(this);
-        this.state = this.getInitialState();
-    }
-
-    getInitialState() {
-        return {
+    resetPicker = () => {
+        this.setState(() => ({
             from: undefined,
-            to: undefined,
-        };
+            to: undefined
+        }));
     }
 
-    handleDayClick(day) {
+    handleDayClick = (day) => {
         const range = DateUtils.addDayToRange(day, this.state);
-        this.setState(range);
-    }
-
-    handleResetClick() {
-        this.setState(this.getInitialState());
-    }
+        this.setState(() => (range));
+    };
 
     render() {
         const { from, to } = this.state;
@@ -44,14 +36,17 @@ export default class CheckHabitsPage extends React.Component {
                         `Selected from ${from.toLocaleDateString()} to
                     ${to.toLocaleDateString()}`}{' '}
                     {from && to && (
-                        <button className="link" onClick={this.handleResetClick}>
+                        <button className="link"
+                            onClick={this.resetPicker}>
                             Reset
                         </button>
                     )}
                 </p>
                 <DayPicker
                     className="Selectable"
-                    numberOfMonths={this.props.numberOfMonths}
+                    numberOfMonths={2}
+                    firstDayOfWeek={1}
+                    month={utils.getNextMonth().toDate()}
                     selectedDays={[from, { from, to }]}
                     modifiers={modifiers}
                     onDayClick={this.handleDayClick}

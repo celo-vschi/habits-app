@@ -2,15 +2,18 @@ import moment from 'moment';
 
 const PATTERN = 'YYYY-MM-DD';
 const PRETTY_PATTERN = 'MMMM Do, YYYY';
+const PRETTY_SHORT_PATTERN = 'MMM Do';
 
 export const dateToPattern = (date) => (moment(date).format(PATTERN));
 export const patternToDate = (pattern) => (moment(pattern).toDate());
 
 export const getCurrentDate = () => (moment().format(PATTERN));
-export const getNextMonth = () => (moment().subtract(1, 'months'));
 
 export const prettifyDate = (date) => (
     moment(date, PATTERN).format(PRETTY_PATTERN)
+);
+export const prettifyDateShort = (date) => (
+    moment(date, PATTERN).format(PRETTY_SHORT_PATTERN)
 );
 
 export const getCalendarData = (habits) => {

@@ -1,6 +1,6 @@
 import React from 'react';
-import moment from 'moment';
 import DayPicker, { DateUtils } from 'react-day-picker';
+import { Link } from 'react-router-dom';
 import * as utils from '../../utils/utils';
 
 
@@ -27,31 +27,41 @@ export default class CheckHabitsPage extends React.Component {
         const modifiers = { start: from, end: to };
 
         return (
-            <div className="content-container">
-                <p>
-                    {!from && !to && 'Please select the first day.'}
-                    {from && !to && 'Please select the last day.'}
-                    {from &&
-                        to &&
-                        `Selected from ${from.toLocaleDateString()} to
-                    ${to.toLocaleDateString()}`}{' '}
-                    {from && to && (
-                        <button className="link"
-                            onClick={this.resetPicker}>
-                            Reset
-                        </button>
-                    )}
-                </p>
-                <DayPicker
-                    className="Selectable"
-                    numberOfMonths={2}
-                    firstDayOfWeek={1}
-                    month={utils.getNextMonth().toDate()}
-                    selectedDays={[from, { from, to }]}
-                    modifiers={modifiers}
-                    onDayClick={this.handleDayClick}
-                />
-            </div>
+            <div className="content-container dashboard-container">
+
+                <div className="dashboard-item__left">
+                    <div className="widget-header">
+                        <div className="widget-header-item">
+                            <button className="button--link" onClick={this.resetPicker}>Reset</button>
+                            <Link to="/edit">
+                                <button className="button">Habits Check</button>
+                            </Link>
+                        </div>
+                        <div className="widget-header-item">
+                            <h3>
+                                <span>{!from ? '<start>' : utils.prettifyDateShort(from)} </span>
+                                to
+                                 <span> {!to ? '<end>' : utils.prettifyDateShort(to)}</span>
+                            </h3>
+                        </div>
+                    </div>
+
+                    <div className="widget">
+                        
+                    </div>
+                </div>
+
+                <div>
+                    <DayPicker
+                        className="Selectable"
+                        firstDayOfWeek={1}
+                        selectedDays={[from, { from, to }]}
+                        modifiers={modifiers}
+                        onDayClick={this.handleDayClick}
+                    />
+                </div>
+
+            </div >
         );
     }
 }

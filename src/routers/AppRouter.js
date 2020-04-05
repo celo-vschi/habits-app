@@ -9,6 +9,7 @@ import PublicRoute from './PublicRoute';
 import AddHabitPage from '../components/AddHabitPage';
 import EditHabitPage from '../components/edit/EditHabitPage';
 import EditHabitsPage from '../components/edit/EditHabitsPage';
+import CheckHabitsPage from '../components/check/CheckHabitsPage';
 
 export const history = createHistory();
 
@@ -18,6 +19,7 @@ const AppRouter = () => (
             <Switch>
                 <PublicRoute path="/" component={LoginPage} exact={true} />
                 <PrivateRoute path="/dashboard" component={DashboardPage} />
+                <PrivateRoute path="/check" component={CheckHabitsPage} />
                 <PrivateRoute path="/create" component={AddHabitPage} />
                 <PrivateRoute path="/edit/:id" component={EditHabitPage} />
                 <PrivateRoute path="/edit" component={EditHabitsPage} />

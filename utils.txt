@@ -1,3 +1,0 @@
-gcm //checkout master
-git merge <heroku_branch>
-git push

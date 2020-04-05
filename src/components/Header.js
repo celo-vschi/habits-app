@@ -10,6 +10,9 @@ export const Header = ({ startLogout }) => (
                 <Link className="header__title" to="/dashboard">
                     <h1>Dashboard</h1>
                 </Link>
+                <Link className="header__title" to="/check">
+                    <h3>Habit Check</h3>
+                </Link>
                 <button className="header__button" onClick={startLogout}>Logout</button>
             </div>
         </div>

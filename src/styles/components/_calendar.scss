@@ -41,3 +41,24 @@
   background-color: $light-blue !important;
   color: $off-white !important;
 }
+
+.Selectable .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+    background-color: $light-blue !important;
+    color: $off-white;
+  }
+
+.Selectable .DayPicker-Day--outside {
+    background-color: $blue !important;
+}
+
+.Selectable .DayPicker-Day {
+    border-radius: 0 !important;
+}
+.Selectable .DayPicker-Day--start {
+    border-top-left-radius: 50% !important;
+    border-bottom-left-radius: 50% !important;
+}
+.Selectable .DayPicker-Day--end {
+    border-top-right-radius: 50% !important;
+    border-bottom-right-radius: 50% !important;
+}

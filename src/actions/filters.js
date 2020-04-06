@@ -1,6 +1,17 @@
 import moment from 'moment';
+
 export const setDate = (date) => ({
     type: 'SET_DATE',
+    date
+});
+
+export const setCheckStartDate = (date = undefined) => ({
+    type: 'SET_CHECK_START_DATE',
+    date
+});
+
+export const setCheckEndDate = (date = undefined) => ({
+    type: 'SET_CHECK_END_DATE',
     date
 });
 

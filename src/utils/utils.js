@@ -202,3 +202,12 @@ export const orderHabits = (habits) => {
     });
     return habits;
 }
+
+export const checkHabits = (habits, fromDate, toDate) => {
+    const from = moment(fromDate);
+    const to = moment(toDate);
+    console.log(from);
+
+    const fromBeforeTo = from.isSameOrBefore(to, 'day');
+    console.log(fromBeforeTo);
+}

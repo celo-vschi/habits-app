@@ -204,10 +204,28 @@ export const orderHabits = (habits) => {
 }
 
 export const checkHabits = (habits, fromDate, toDate) => {
-    const from = moment(fromDate);
-    const to = moment(toDate);
-    console.log(from);
+    const map = new Map();
 
-    const fromBeforeTo = from.isSameOrBefore(to, 'day');
-    console.log(fromBeforeTo);
+    let from = moment(fromDate);
+    const to = moment(toDate);
+
+    while (from.isSameOrBefore(to, 'day')) {
+        const date = from.format(PATTERN);
+        const habitsForDate = habitsForDay(habits, { date });
+        if (habitsForDate.length > 0) {
+            habitsForDate.forEach((habit) => {
+                if (!habitDone(habit, date)) {
+                    const name = habit.name;
+                    if (map.has(name)) {
+                        const newData = map.get(name) + 1;
+                        map.set(name, newData);
+                    } else {
+                        map.set(name, 1);
+                    }
+                }
+            });
+        }
+        from = from.add(1, 'days');
+    }
+    console.log(map);
 }

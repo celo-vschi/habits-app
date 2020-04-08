@@ -26,8 +26,8 @@ export class CheckHabitsSummary extends React.Component {
             this.setState(() => ({ error: 'Please select a period!' }));
         } else {
             this.setState(() => ({ error: '' }));
+            utils.checkHabits(this.props.habits, from, to);
         }
-        utils.checkHabits(this.props.habits, from, to);
     }
 
     render() {

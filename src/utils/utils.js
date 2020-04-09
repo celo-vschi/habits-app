@@ -227,5 +227,7 @@ export const checkHabits = (habits, fromDate, toDate) => {
         }
         from = from.add(1, 'days');
     }
-    console.log(map);
+
+    var orderedMap = new Map([...map.entries()].sort((a, b) => b[1] - a[1]));
+    return orderedMap;
 }

@@ -8,6 +8,7 @@ export class CheckHabitsSummary extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+            habits: undefined,
             error: ''
         };
     };
@@ -15,6 +16,10 @@ export class CheckHabitsSummary extends React.Component {
     resetPicker = () => {
         this.props.setCheckStartDate(undefined);
         this.props.setCheckEndDate(undefined);
+        this.setState(() => ({
+            error: '',
+            habits: undefined
+        }));
     }
 
     computeHabitCheck = () => {
@@ -23,10 +28,16 @@ export class CheckHabitsSummary extends React.Component {
             to: this.props.filters.checkEndDate
         }
         if (!from || !to) {
-            this.setState(() => ({ error: 'Please select a period!' }));
+            this.setState(() => ({
+                error: 'Please select a period!',
+                habits: undefined
+            }));
         } else {
-            this.setState(() => ({ error: '' }));
-            utils.checkHabits(this.props.habits, from, to);
+            const map = utils.checkHabits(this.props.habits, from, to);
+            this.setState(() => ({
+                error: '',
+                habits: map
+            }));
         }
     }
 
@@ -54,7 +65,12 @@ export class CheckHabitsSummary extends React.Component {
                 </div>
 
                 <div className="widget">
-                    <p className="widget__message">Select a period and press the <b>Habit Check</b> button</p>
+                    {!this.state.habits && <p className="widget__message">Select a period and press the <b>Habit Check</b> button</p>}
+
+                    {(typeof this.state.habits !== 'undefined') && (this.state.habits.size > 0 ?
+                        <p>habits</p> :
+                        <p className="widget__message">No missed habits for the selected period. Good job!</p>)}
+
                     {this.state.error && <p className="widget-error">{this.state.error}</p>}
                 </div>
             </div>

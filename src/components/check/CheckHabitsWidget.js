@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as utils from '../../utils/utils';
 import { setCheckStartDate, setCheckEndDate } from '../../actions/filters';
+import CheckHabitsItem from './CheckHabitsItem';
 
-export class CheckHabitsSummary extends React.Component {
+export class CheckHabitsWidget extends React.Component {
 
     constructor(props) {
         super(props);
@@ -68,7 +69,14 @@ export class CheckHabitsSummary extends React.Component {
                     {!this.state.habits && <p className="widget__message">Select a period and press the <b>Habit Check</b> button</p>}
 
                     {(typeof this.state.habits !== 'undefined') && (this.state.habits.size > 0 ?
-                        <p>habits</p> :
+                        Array.from(this.state.habits, ([key, value], i) =>
+                            <CheckHabitsItem
+                                key={key}
+                                last={this.state.habits.size === i + 1}
+                                name={key}
+                                value={value}
+                            />
+                        ) :
                         <p className="widget__message">No missed habits for the selected period. Good job!</p>)}
 
                     {this.state.error && <p className="widget-error">{this.state.error}</p>}
@@ -88,4 +96,4 @@ const mapDispatchToProps = (dispatch) => ({
     setCheckEndDate: (date) => dispatch(setCheckEndDate(date))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CheckHabitsSummary);
+export default connect(mapStateToProps, mapDispatchToProps)(CheckHabitsWidget);

@@ -1,10 +1,10 @@
 import React from 'react';
 import CheckHabitsPeriodPicker from './CheckHabitsPeriodPicker';
-import CheckHabitsSummary from './CheckHabitsSummary';
+import CheckHabitsWidget from './CheckHabitsWidget';
 
 const CheckHabitsPage = () => (
     <div className="content-container dashboard-container">
-        <CheckHabitsSummary />
+        <CheckHabitsWidget />
         <CheckHabitsPeriodPicker />
     </div>
 );

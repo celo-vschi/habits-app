@@ -9,6 +9,11 @@
     }
 }
 
+.habit__title {
+    @extend .habit;
+    background-color: $purple;
+}
+
 .habit__last {
     @extend .habit;
     border: none;

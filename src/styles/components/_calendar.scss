@@ -47,6 +47,10 @@
     color: $off-white;
   }
 
+.DayPicker-Day--outside {
+    background-color: $blue !important;
+}
+
 .Selectable .DayPicker-Day--outside {
     background-color: $blue !important;
 }

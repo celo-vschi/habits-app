@@ -25,7 +25,7 @@ export const getCalendarData = (habits) => {
     };
 
     const today = moment();
-    let checkingDay = moment().startOf('month');
+    let checkingDay = moment().startOf('month').subtract(1, 'months');
     let worst = {
         dates: [],
         percentage: 100
@@ -64,7 +64,6 @@ export const getCalendarData = (habits) => {
         worst.dates.forEach((date) => red.push(date));
     }
 
-    // console.log(calendarData);
     return calendarData;
 };
 
@@ -81,7 +80,6 @@ const habitsDone = (habits, date) => {
             habitsDone++;
         }
     });
-    // console.log(date, habitsDone);
     return habitsDone;
 }
 

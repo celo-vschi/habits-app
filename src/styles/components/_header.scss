@@ -18,12 +18,18 @@
 .header__title {
     color: white;
     text-decoration: none;
+    padding-right: $l-size;
     h1 {
         margin: 0;
     }
     h3 {
         margin: 0;
     }
+}
+
+.header-title-container {
+    display: flex;
+    align-items: center;
 }
 
 .header__button {

@@ -1,7 +1,13 @@
 // set env variables (look for a persistent alternative)
 export FIREBASE_API_KEY="AIzaSyCCvyb0h9gyoOPafWoBkCj5tnM3BXR1L30" FIREBASE_AUTH_DOMAIN="habits-c3b19.firebaseapp.com" FIREBASE_DATABASE_URL="https://habits-c3b19.firebaseio.com" FIREBASE_PROJECT_ID="habits-c3b19" FIREBASE_STORAGE_BUCKET="habits-c3b19.appspot.com" FIREBASE_MESSAGING_SENDER_ID="632249232808" FIREBASE_APP_ID="1:632249232808:web:bcb500a2d97824cb8d419d" FIREBASE_MEASUREMENT_ID="G-0SJGM4NQ07"
 
-git checkout -b <brach_name> // creates and checks out the branch
+// creates and checks out the branch
+git checkout -b <brach_name> 
+gccb <branch_name>
+
+// deploy the feature branch
+git push heroku <branch_name>:master
+gphf <branch_name>
 
 gcm //checkout master
 git merge <heroku_branch>

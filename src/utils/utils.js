@@ -16,6 +16,17 @@ export const prettifyDateShort = (date) => (
     moment(date, PATTERN).format(PRETTY_SHORT_PATTERN)
 );
 
+const computeStartDate = (habits, today) => {
+    let date = today.format(PATTERN);
+    while (habitsForDay(habits, { date }).length > 0) {
+        today = today.subtract(1, 'days');
+        date = today.format(PATTERN);
+    }
+    const firstDayWithHabits = today.add(1, 'days');
+    console.log(firstDayWithHabits.format(PATTERN));
+    return firstDayWithHabits;
+}
+
 export const getCalendarData = (habits) => {
     const green = [];
     const orange = [];
@@ -25,7 +36,9 @@ export const getCalendarData = (habits) => {
     };
 
     const today = moment();
-    let checkingDay = moment().startOf('month').subtract(1, 'months');
+    const startingDate = computeStartDate(habits, today);
+
+    let checkingDay = moment().startOf('month').subtract(7, 'months');
     let worst = {
         dates: [],
         percentage: 100

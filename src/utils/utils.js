@@ -16,16 +16,9 @@ export const prettifyDateShort = (date) => (
     moment(date, PATTERN).format(PRETTY_SHORT_PATTERN)
 );
 
-const computeStartDate = (habits, today) => {
-    let date = today.format(PATTERN);
-    while (habitsForDay(habits, { date }).length > 0) {
-        today = today.subtract(1, 'days');
-        date = today.format(PATTERN);
-    }
-    const firstDayWithHabits = today.add(1, 'days');
-    console.log(firstDayWithHabits.format(PATTERN));
-    return firstDayWithHabits;
-}
+const isSameMonthAndYear = (d1, d2) => (
+    d1.getMonth() == d2.getMonth() && d1.getFullYear() == d2.getFullYear()
+)
 
 export const getCalendarData = (habits) => {
     const green = [];
@@ -35,50 +28,57 @@ export const getCalendarData = (habits) => {
         green, orange, red
     };
 
-    const today = moment();
-    const startingDate = computeStartDate(habits, moment(today));
-
-    let checkingDay = startingDate;
     let worst = {
         dates: [],
         percentage: 100
     };
 
-    while (checkingDay.isBefore(today, 'day')) {
-        const date = checkingDay.format(PATTERN);
-        const habitsForDate = habitsForDay(habits, { date });
+    let checkingDay = moment().subtract(1, 'days');
+    let habitsForDate = 0;
+    do {
+        let date = checkingDay.format(PATTERN);
+        habitsForDate = habitsForDay(habits, { date });
+
         if (habitsForDate.length > 0) {
             const allHabits = habitsForDate.length;
 
             const checkingDayDate = checkingDay.toDate();
             const finishedHabits = habitsDone(habits, date);
-
             if (finishedHabits === allHabits) {
                 green.push(checkingDayDate);
-
             } else {
                 const percentage = finishedHabits / allHabits;
-
                 if (percentage == worst.percentage) {
                     worst.dates.push(checkingDayDate);
                 } else if (percentage < worst.percentage) {
-                    worst.dates.forEach((date) => orange.push(date));
-                    worst.dates = [checkingDayDate];
+                    
+                    // move all worst.dates from the current month to orange
+                    worst.dates = worst.dates.filter((date) => {
+                        if (isSameMonthAndYear(date, checkingDayDate)) {
+                            orange.push(date);
+                        } else {
+                            return date;
+                        }
+                    });
+                    worst.dates.push(checkingDayDate);
                     worst.percentage = percentage;
-
                 } else {
                     orange.push(checkingDayDate);
                 }
             }
         }
-        const nextCheckingDay = moment(checkingDay).add(1, 'days');
+
+        // if different month reset the worst.percentage
+        const nextCheckingDay = moment(checkingDay).subtract(1, 'days');
         if (!checkingDay.isSame(nextCheckingDay, 'month')) {
-            console.log(checkingDay, nextCheckingDay);
             worst.percentage = 100;
         }
         checkingDay = nextCheckingDay;
 
     }
+    while (habitsForDate.length > 0);
+
+    // push all worst dates to red
     if (worst.dates.length > 0) {
         worst.dates.forEach((date) => red.push(date));
     }

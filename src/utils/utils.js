@@ -36,9 +36,9 @@ export const getCalendarData = (habits) => {
     };
 
     const today = moment();
-    const startingDate = computeStartDate(habits, today);
+    const startingDate = computeStartDate(habits, moment(today));
 
-    let checkingDay = moment().startOf('month').subtract(7, 'months');
+    let checkingDay = startingDate;
     let worst = {
         dates: [],
         percentage: 100
@@ -71,7 +71,13 @@ export const getCalendarData = (habits) => {
                 }
             }
         }
-        checkingDay = checkingDay.add(1, 'days');
+        const nextCheckingDay = moment(checkingDay).add(1, 'days');
+        if (!checkingDay.isSame(nextCheckingDay, 'month')) {
+            console.log(checkingDay, nextCheckingDay);
+            worst.percentage = 100;
+        }
+        checkingDay = nextCheckingDay;
+
     }
     if (worst.dates.length > 0) {
         worst.dates.forEach((date) => red.push(date));

@@ -6,12 +6,7 @@ import { setDate } from '../actions/filters';
 import * as utils from '../utils/utils';
 
 export class HabitDayPicker extends React.Component {
-    state = {
-        selectedDay: null
-    };
-
-    handleDayClick = (day, { selected }) => {
-        this.setState(() => ({ selectedDay: selected ? undefined : day }));
+    handleDayClick = (day) => {
         const date = moment(day).format('YYYY-MM-DD');
         this.props.setDate(date);
     };
@@ -24,9 +19,11 @@ export class HabitDayPicker extends React.Component {
                     orange: this.props.calendarData.orange,
                     red: this.props.calendarData.red
                 }}
-                selectedDays={this.state.selectedDay}
+                selectedDays={new Date(this.props.selectedDay)}
                 firstDayOfWeek={1}
+                todayButton="Go to Today"
                 onDayClick={this.handleDayClick}
+                onTodayButtonClick={(day) => this.handleDayClick(day)}
                 onDayclassName="calendar" />
         );
     }
@@ -34,6 +31,7 @@ export class HabitDayPicker extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
+        selectedDay: state.filters.date,
         calendarData: utils.getCalendarData(state.habits)
     };
 };

@@ -36,6 +36,16 @@
     background-color: $off-black !important;
 }
 
+// START of 'Today' button
+.DayPicker-Footer {
+    text-align: center;
+}
+
+.DayPicker-TodayButton {
+    color: white !important;
+}
+// END of 'Today' button
+
 .DayPicker:not(.DayPicker--interactionDisabled)
   .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
   background-color: $light-blue !important;

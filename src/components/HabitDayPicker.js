@@ -12,12 +12,28 @@ export class HabitDayPicker extends React.Component {
     };
 
     render() {
+        const { green, orange, red } = {
+            green: this.props.calendarData.green,
+            orange: this.props.calendarData.orange,
+            red: this.props.calendarData.red
+        }
         return (
             <DayPicker
                 modifiers={{
-                    green: this.props.calendarData.green,
-                    orange: this.props.calendarData.orange,
-                    red: this.props.calendarData.red
+                    green: green.days,
+                    greenStart: green.periodStart,
+                    greenMiddle: green.periodMiddle,
+                    greenEnd: green.periodEnd,
+
+                    orange: orange.days,
+                    orangeStart: orange.periodStart,
+                    orangeMiddle: orange.periodMiddle,
+                    orangeEnd: orange.periodEnd,
+
+                    red: red.days,
+                    redStart: red.periodStart,
+                    redMiddle: red.periodMiddle,
+                    redEnd: red.periodEnd
                 }}
                 selectedDays={new Date(this.props.selectedDay)}
                 firstDayOfWeek={1}

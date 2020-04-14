@@ -21,10 +21,10 @@ const isSameMonthAndYear = (d1, d2) => (
 )
 
 export const getCalendarData = (habits) => {
-    const green = [];
-    const orange = [];
-    const red = [];
-    const calendarData = {
+    let green = [];
+    let orange = [];
+    let red = [];
+    let calendarData = {
         green, orange, red
     };
 
@@ -51,7 +51,7 @@ export const getCalendarData = (habits) => {
                 if (percentage == worst.percentage) {
                     worst.dates.push(checkingDayDate);
                 } else if (percentage < worst.percentage) {
-                    
+
                     // move all worst.dates from the current month to orange
                     worst.dates = worst.dates.filter((date) => {
                         if (isSameMonthAndYear(date, checkingDayDate)) {
@@ -83,8 +83,55 @@ export const getCalendarData = (habits) => {
         worst.dates.forEach((date) => red.push(date));
     }
 
+    green = usePeriodsForCalendarData(calendarData.green);
+    orange = usePeriodsForCalendarData(calendarData.orange);
+    red = usePeriodsForCalendarData(calendarData.red);
+    calendarData = { green, orange, red };
     return calendarData;
 };
+
+const usePeriodsForCalendarData = (array) => {
+    const old = array.sort((d1, d2) => d1 - d2);
+
+    const days = [];
+    const periodStart = [];
+    const periodMiddle = [];
+    const periodEnd = [];
+
+    let startFound = false;
+    let lastDate = old[0];
+    old.forEach((date, i) => {
+        if (i != 0) {
+            if (isNextDay(lastDate, date)) {
+                if (startFound) {
+                    periodMiddle.push(lastDate);
+                } else {
+                    periodStart.push(lastDate);
+                    startFound = true;
+                }
+            } else {
+                if (startFound) {
+                    periodEnd.push(lastDate);
+                    startFound = false;
+                } else {
+                    days.push(lastDate);
+                }
+            } if (i == old.length - 1) {
+                if (isNextDay(lastDate, date)) {
+                    periodEnd.push(date);
+                } else {
+                    days.push(date);
+                }
+            }
+        }
+        lastDate = date;
+    });
+    return { days, periodStart, periodMiddle, periodEnd };
+}
+
+const isNextDay = (d1, d2) => {
+    return moment(d1).add(1, 'days').isSame(moment(d2));
+}
 
 export const getDailySummary = (habits, date) => {
     const habitsForDate = habitsForDay(habits, { date });

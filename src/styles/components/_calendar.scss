@@ -16,17 +16,65 @@
     outline: none;
 }
 
+// START of green
 .DayPicker-Day--green {
-    background-color: #2c5639;
+    background-color: $green;
 }
+.DayPicker-Day--greenMiddle {
+    @extend .DayPicker-Day--green;
+    border-radius: 0 !important;
+}
+.DayPicker-Day--greenStart {
+    @extend .DayPicker-Day--greenMiddle;
+    border-top-left-radius: 50% !important;
+    border-bottom-left-radius: 50% !important;
+}
+.DayPicker-Day--greenEnd {
+    @extend .DayPicker-Day--greenMiddle;
+    border-top-right-radius: 50% !important;
+    border-bottom-right-radius: 50% !important;
+}
+// END of green
 
+// START of orange
 .DayPicker-Day--orange {
-    background-color: #5d5532;
+    background-color: $orange;
 }
+.DayPicker-Day--orangeMiddle {
+    @extend .DayPicker-Day--orange;
+    border-radius: 0 !important;
+}
+.DayPicker-Day--orangeStart {
+    @extend .DayPicker-Day--orangeMiddle;
+    border-top-left-radius: 50% !important;
+    border-bottom-left-radius: 50% !important;
+}
+.DayPicker-Day--orangeEnd {
+    @extend .DayPicker-Day--orangeMiddle;
+    border-top-right-radius: 50% !important;
+    border-bottom-right-radius: 50% !important;
+}
+//END of orange
 
+// START of red
 .DayPicker-Day--red {
-    background-color: #562c2c;
+    background-color: $red;
 }
+.DayPicker-Day--redMiddle{
+    @extend .DayPicker-Day--red;
+    border-radius: 0 !important;
+}
+.DayPicker-Day--redStart {
+    @extend .DayPicker-Day--redMiddle;
+    border-top-left-radius: 50% !important;
+    border-bottom-left-radius: 50% !important;
+}
+.DayPicker-Day--redEnd {
+    @extend .DayPicker-Day--redMiddle;
+    border-top-right-radius: 50% !important;
+    border-bottom-right-radius: 50% !important;
+}
+//END of red
 
 .DayPicker-Day--today {
     color: white !important;

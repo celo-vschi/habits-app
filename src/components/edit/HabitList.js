@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import HabitListItem from './HabitListItem';
+import HabitListTitle from './HabitListTitle';
 import DeleteHabitModal from '../DeleteHabitModal';
 import { startRemoveHabit } from '../../actions/habits';
 import * as utils from '../../utils/utils';
@@ -32,15 +33,25 @@ export class HabitList extends React.Component {
                         this.props.habits.length === 0 ? (
                             <p className="widget__message">No habits</p>
                         ) : (
-                                this.props.habits.map((habit, i) => (
-                                    <HabitListItem
-                                        last={this.props.habits.length === i + 1}
-                                        key={habit.id}
-                                        {...habit}
-                                        setModalData={this.setModalData}
-                                        props={this.props}
-                                    />
-                                ))
+                                this.props.habits.map((habit, i) => {
+                                    return habit.name.includes('_') ? (
+                                        <HabitListTitle
+                                            last={this.props.habits.length === i + 1}
+                                            key={habit.id}
+                                            {...habit}
+                                            setModalData={this.setModalData}
+                                            props={this.props}
+                                        />
+                                    ) : (
+                                            <HabitListItem
+                                                last={this.props.habits.length === i + 1}
+                                                key={habit.id}
+                                                {...habit}
+                                                setModalData={this.setModalData}
+                                                props={this.props}
+                                            />
+                                        )
+                                })
                             )
                     }
                 </div>

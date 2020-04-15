@@ -63,3 +63,7 @@
     line-height: normal;
     text-align: left;
 }
+.habit-ordering__title {
+    @extend .habit-ordering;
+    color: $purple;
+}

@@ -62,11 +62,11 @@ export class ReorderHabitsModal extends React.Component {
     }
 }
 
-const SortableItem = SortableElement(({ value, showDone, done, i }) =>
-    <p className="habit-ordering">
+const SortableItem = SortableElement(({ value, showDone, done, i }) => (
+    <p className={value.includes('_') ? "habit-ordering__title" : "habit-ordering"} >
         {showDone && done ? (<s>{i + 1}. {value}</s>) : (<span>{i + 1}. {value}</span>)}
-    </p>
-);
+    </p >
+));
 
 const SortableList = SortableContainer(({ habits, showDone }) => {
     return (

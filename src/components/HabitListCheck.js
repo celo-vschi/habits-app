@@ -1,23 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import HabitListItemCheck from './HabitListItemCheck';
+import HabitListCheckItem from './HabitListCheckItem';
+import HabitListCheckTitle from './HabitListCheckTitle';
 import * as utils from '../utils/utils';
-import HabitListItemTitle from './HabitListItemTitle';
 
 export const HabitListCheck = (props) => (
     <div className="widget">
         {props.habits.length > 0 ?
             (props.habits.map((habit, i) => {
                 return habit.name.includes('_') ? (
-                    <HabitListItemTitle
+                    <HabitListCheckTitle
                         key={habit.id}
                         {...habit}
                         date={props.date}
                         props={props}
                     />
                 ) : (
-                        <HabitListItemCheck
+                        <HabitListCheckItem
                             key={habit.id}
                             last={props.habits.length === i + 1}
                             {...habit}

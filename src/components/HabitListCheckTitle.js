@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { startMarkHabit } from '../actions/habits';
 import * as utils from '../utils/utils';
 
-export class HabitListItemCheck extends React.Component {
+export class HaitListCheckTitle extends React.Component {
     markDone = () => {
         const id = this.props.id;
         const date = this.props.date;
@@ -24,10 +24,10 @@ export class HabitListItemCheck extends React.Component {
             this.markDone();
         }
     }
-    
+
     render() {
         return (
-            <div className={this.props.last ? "habit habit__last" : "habit"}>
+            <div className={"habit__title"}>
                 <label className="checkbox-container">
                     <input
                         type="checkbox"
@@ -35,13 +35,10 @@ export class HabitListItemCheck extends React.Component {
                         value={this.props.done}
                         onChange={this.handleChange}
                     />
-                    <span className="checkbox-checkmark"></span>
+                    <span className="checkbox-checkmark__title"></span>
                     <p className="habit__text">
                         {this.props.done ? (<s>{this.props.name}</s>) : (this.props.name)}
                     </p>
-                    <span className="habit__subtext">
-                        {this.props.streak}
-                    </span>
                 </label>
             </div>
         );
@@ -56,4 +53,4 @@ const mapStateToProps = (state, props) => ({
     streak: utils.getStreakText(utils.habitsForDay(state.habits, state.filters), props.id)
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(HabitListItemCheck);
+export default connect(mapStateToProps, mapDispatchToProps)(HaitListCheckTitle);

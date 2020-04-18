@@ -3,7 +3,7 @@ import moment from 'moment';
 import { connect } from 'react-redux';
 import DayPicker from 'react-day-picker';
 import { setDate } from '../actions/filters';
-import { FaBolt } from "react-icons/fa";
+import { FaCircle } from "react-icons/fa";
 import * as utils from '../utils/utils';
 
 export class HabitDayPicker extends React.Component {
@@ -26,12 +26,18 @@ export class HabitDayPicker extends React.Component {
         const date = day.getDate();
         const birthdayStyle = {
             position: 'absolute',
-            fontSize: 12,
-            bottom: 19,
-            left: 22,
-            color: '#818905'
+            fontSize: 5,
+            bottom: 27,
+            left: 9,
+            // color: '#8357c5'
+            color: '#a5afd6'
+
+            // fontSize: '0.8em',
+            // textAlign: 'right'
         };
         const cellStyle = {
+            // height: 50,
+            // width: 60,
             position: 'relative',
         };
         return (
@@ -40,7 +46,7 @@ export class HabitDayPicker extends React.Component {
                 {birthdays[date] &&
                     birthdays[date].map((name, i) => (
                         <div key={i} style={birthdayStyle}>
-                            <FaBolt />
+                            <FaCircle />
                         </div>
                     ))}
             </div >

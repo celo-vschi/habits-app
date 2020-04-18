@@ -11,7 +11,7 @@ export class HabitListCheckItem extends React.Component {
         this.props.startMarkHabit(id, date, true);
 
         const halfDone = {
-            halfDone: true
+            halfDone: false
         };
         this.props.startEditHabit(this.props.id, halfDone);
     }

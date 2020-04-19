@@ -12,24 +12,33 @@ export class HabitDayPicker extends React.Component {
         this.props.setDate(date);
     };
 
+    isSpecial = (date) => {
+        const specialDates = this.props.calendarData.special;
+        var special = false;
+        for (var i = 0; i < specialDates.length; i++) {
+            if (this.isSameDay(specialDates[i], date)) {
+                special = true;
+                break;
+            }
+        }
+        return special;
+    }
+
+    isSameDay = (d1, d2) => (
+        d1.getDate() == d2.getDate() && d1.getMonth() == d2.getMonth() && d1.getFullYear() == d2.getFullYear()
+    )
+
 
     renderDay = (day) => {
-        const birthdays = {
-            13: ['Irene'],
-            18: ['Marta']
-        };
-
         const date = day.getDate();
-        console.log(day);
         return (
             <div className="normalDay">
                 <div>{date}</div>
-                {birthdays[date] &&
-                    birthdays[date].map((name, i) => (
-                        <div key={i} className="specialDay">
-                            <FaCircle />
-                        </div>
-                    ))}
+                {this.isSpecial(day) &&
+                    <div className="specialDay">
+                        <FaCircle />
+                    </div>
+                }
             </div >
         );
     }

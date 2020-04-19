@@ -98,7 +98,6 @@ export const getCalendarData = (habits) => {
     orange = usePeriodsForCalendarData(calendarData.orange);
     red = usePeriodsForCalendarData(calendarData.red);
     calendarData = { green, orange, red, special };
-    console.log(calendarData);
     return calendarData;
 };
 

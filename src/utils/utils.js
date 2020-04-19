@@ -228,6 +228,27 @@ export const habitsForDayAndFuture = (habits, { date }) => {
     return notDoneHabits.concat(doneHabits);
 };
 
+export const specialHabitsForDay = (habits, { date }) => {
+    habits = orderHabits(habits);
+    const doneHabits = [];
+    const notDoneHabits = [];
+    habits.forEach((habit) => {
+        if (habit.specialHabit && habitIsStarted(habit, date)) {
+            let done = false;
+            if (habit.progress && habit.progress[date]) {
+                done = !!habit.progress[date].done;
+            }
+
+            if (done) {
+                doneHabits.push({ ...habit, done });
+            } else {
+                notDoneHabits.push({ ...habit, done });
+            }
+        }
+    });
+    return notDoneHabits.concat(doneHabits);
+};
+
 export const habitsForDay = (habits, { date }) => {
     habits = orderHabits(habits);
     const doneHabits = [];

@@ -125,3 +125,21 @@
     border-top-right-radius: 50% !important;
     border-bottom-right-radius: 50% !important;
 }
+
+
+// START of normal day
+.normalDay {
+    position: relative;
+}
+// END of normal day
+
+
+// START of special-day-x
+.specialDay {
+    position: absolute;
+    font-size: 5px;
+    bottom: 27px;
+    left: 9px;
+    color: '#a5afd6'
+}
+// END of special-day-x

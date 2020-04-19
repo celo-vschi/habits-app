@@ -13,39 +13,20 @@ export class HabitDayPicker extends React.Component {
     };
 
 
-    renderDay(day) {
+    renderDay = (day) => {
         const birthdays = {
-            3: ['Mirko'],
-            10: ['Elena'],
-            17: ['Irene'],
-            4: ['Claudia'],
-            11: ['Simone'],
-            18: ['Marta'],
+            13: ['Irene'],
+            18: ['Marta']
         };
 
         const date = day.getDate();
-        const birthdayStyle = {
-            position: 'absolute',
-            fontSize: 5,
-            bottom: 27,
-            left: 9,
-            // color: '#8357c5'
-            color: '#a5afd6'
-
-            // fontSize: '0.8em',
-            // textAlign: 'right'
-        };
-        const cellStyle = {
-            // height: 50,
-            // width: 60,
-            position: 'relative',
-        };
+        console.log(day);
         return (
-            <div style={cellStyle} >
+            <div className="normalDay">
                 <div>{date}</div>
                 {birthdays[date] &&
                     birthdays[date].map((name, i) => (
-                        <div key={i} style={birthdayStyle}>
+                        <div key={i} className="specialDay">
                             <FaCircle />
                         </div>
                     ))}

@@ -24,8 +24,9 @@ export const getCalendarData = (habits) => {
     let green = [];
     let orange = [];
     let red = [];
+    let special = [];
     let calendarData = {
-        green, orange, red
+        green, orange, red, special
     };
 
     let worst = {
@@ -37,8 +38,18 @@ export const getCalendarData = (habits) => {
     let habitsForDate = 0;
     do {
         let date = checkingDay.format(PATTERN);
-        habitsForDate = habitsForDay(habits, { date });
 
+        // special habits
+        const specialHabitsForDate = specialHabitsForDay(habits, { date });
+        if (specialHabitsForDate.length > 0) {
+            const finishedHabits = habitsDone(specialHabitsForDate, date);
+            if (finishedHabits != 0) {
+                special.push(checkingDay.toDate());
+            }
+        }
+
+        // normal habits
+        habitsForDate = habitsForDay(habits, { date });
         if (habitsForDate.length > 0) {
             const allHabits = habitsForDate.length;
 
@@ -86,7 +97,8 @@ export const getCalendarData = (habits) => {
     green = usePeriodsForCalendarData(calendarData.green);
     orange = usePeriodsForCalendarData(calendarData.orange);
     red = usePeriodsForCalendarData(calendarData.red);
-    calendarData = { green, orange, red };
+    calendarData = { green, orange, red, special };
+    console.log(calendarData);
     return calendarData;
 };
 

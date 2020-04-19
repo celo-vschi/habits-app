@@ -8,12 +8,13 @@ export default class HabitListItem extends React.Component {
     }
 
     render() {
+        const special = this.props.specialHabit;
         const last = this.props.last;
         const name = this.props.name;
         const id = this.props.id;
         const startingDate = utils.prettifyDate(this.props.startingDate);
         return (
-            <div className={last ? "habit habit__last" : "habit"}>
+            <div className={special ? "habit habit__special" : (last ? "habit habit__last" : "habit")}>
                 <Link to={`/edit/${id}`}>
                     <p className="habit__text">
                         {name}

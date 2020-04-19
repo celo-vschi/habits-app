@@ -126,13 +126,12 @@
     border-bottom-right-radius: 50% !important;
 }
 
-
+/* START of SPECIAL DAY FEATURE */
 // START of normal day
 .normalDay {
     position: relative;
 }
 // END of normal day
-
 
 // START of special-day-x
 .specialDay {
@@ -143,3 +142,4 @@
     color: '#a5afd6'
 }
 // END of special-day-x
+/* END of SPECIAL DAY FEATURE */

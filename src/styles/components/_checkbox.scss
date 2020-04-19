@@ -67,14 +67,14 @@
   }
 
 
-  /** TITLE CHECKBOX **/
+  /** START of TITLE CHECKBOX **/
   /* Create a custom checkbox */
   .checkbox-checkmark__title {
     @extend .checkbox-checkmark;
     background-color: $purple;
     margin-top: 0;
   }
-
+  
   /* On mouse-over, keep the background color purple*/
   .checkbox-container:hover input ~ .checkbox-checkmark__title {
     background-color: $purple;
@@ -84,7 +84,7 @@
   .checkbox-container input:checked ~ .checkbox-checkmark__title {
     background-color: $purple;
   }
-
+  
   /* Style the checkmark/indicator */
   .checkbox-container .checkbox-checkmark__title:after {
     left: 9px;
@@ -97,3 +97,16 @@
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+  /** END of TITLE CHECKBOX **/
+
+  /**START of SPECIAL HABIT CHECKBOX **/
+  .checkbox-container__special {
+    @extend .checkbox-container;
+    padding: 0px;
+  }
+  .checkbox-checkmark__special {
+    @extend .checkbox-checkmark;
+    top: 10px;
+    left: 209px;
+  }
+  /**START of SPECIAL HABIT CHECKBOX **/

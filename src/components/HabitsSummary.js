@@ -5,6 +5,7 @@ import * as utils from '../utils/utils';
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import { incrementDate, decrementDate } from '../actions/filters';
 import HabitListCheck from './HabitListCheck';
+import SpecialHabitListCheck from './SpeicalHabitListCheck';
 
 export class HabitsSummary extends React.Component {
     render() {
@@ -27,6 +28,7 @@ export class HabitsSummary extends React.Component {
                     </div>
                 </div>
                 <HabitListCheck />
+                <SpecialHabitListCheck />
             </div>
         )
     }

@@ -204,6 +204,9 @@ export const habitsForDayAndFuture = (habits, { date }) => {
     const doneHabits = [];
     const notDoneHabits = [];
     habits.forEach((habit) => {
+        if (habit.specialHabit) {
+            return;
+        }
 
         let done = false;
         if (habitIsStarted(habit, date)) {
@@ -230,6 +233,9 @@ export const habitsForDay = (habits, { date }) => {
     const doneHabits = [];
     const notDoneHabits = [];
     habits.forEach((habit) => {
+        if (habit.specialHabit) {
+            return;
+        }
 
         if (habitIsStarted(habit, date)) {
 

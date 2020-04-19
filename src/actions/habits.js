@@ -12,10 +12,11 @@ export const startAddHabit = (habitData = {}) => {
 
         const {
             name = '',
-            startingDate = utils.getCurrentDate()
+            startingDate = utils.getCurrentDate(),
+            specialHabit = false
         } = habitData;
 
-        const habit = { name, startingDate };
+        const habit = { name, startingDate, specialHabit };
         return database.ref(`users/${uid}/habits`).push(habit)
             .then((ref) => {
                 dispatch(addHabit({

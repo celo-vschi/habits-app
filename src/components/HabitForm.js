@@ -1,12 +1,8 @@
 import React from 'react';
 import moment from 'moment';
 import DayPickerInput from 'react-day-picker/DayPickerInput';
-import MomentLocaleUtils, {
-    formatDate,
-    parseDate,
-} from 'react-day-picker/moment';
+import MomentLocaleUtils, { formatDate, parseDate, } from 'react-day-picker/moment';
 import * as utils from '../utils/utils';
-import { startEditHabit } from '../actions/habits';
 
 export default class HabitForm extends React.Component {
     constructor(props) {
@@ -14,7 +10,7 @@ export default class HabitForm extends React.Component {
         this.state = {
             name: props.habit ? props.habit.name : '',
             error: '',
-
+            specialHabit: props.habit ? (!!props.habit.specialHabit && true) : false,
             selectedDay: props.habit ?
                 utils.patternToDate(props.habit.startingDate) : moment().toDate(),
         };
@@ -31,6 +27,11 @@ export default class HabitForm extends React.Component {
         this.setState(() => ({ name }));
     };
 
+    handleSpecialDayCheckboxChange = (e) => {
+        const specialHabit = e.target.value != "true";
+        this.setState(() => ({ specialHabit }))
+    }
+
     onSubmit = (e) => {
         e.preventDefault();
 
@@ -41,7 +42,8 @@ export default class HabitForm extends React.Component {
             const startingDate = utils.dateToPattern(this.state.selectedDay);
             this.props.onSubmit({
                 name: this.state.name,
-                startingDate
+                startingDate,
+                specialHabit: this.state.specialHabit
             });
         }
     }
@@ -69,6 +71,7 @@ export default class HabitForm extends React.Component {
                                     onChange={this.onNameChange}
                                 />
                             </div>
+
                             <div className="widget-input">
                                 <h3>Starting Date</h3>
                                 <DayPickerInput
@@ -85,6 +88,21 @@ export default class HabitForm extends React.Component {
                                     inputProps={{ readOnly: true }}
                                 />
                             </div>
+
+                            <div className="widget-input">
+                                <label className="checkbox-container__special">
+                                    <h3>Special Habit</h3>
+                                    <input
+                                        type="checkbox"
+                                        checked={this.state.specialHabit}
+                                        value={this.state.specialHabit}
+                                        onChange={this.handleSpecialDayCheckboxChange}
+                                    />
+                                    <span className="checkbox-checkmark__special"></span>
+
+                                </label>
+                            </div>
+
                             {this.state.error && <p className="widget-error">{this.state.error}</p>}
                         </div>
                     </div>

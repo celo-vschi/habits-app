@@ -19,6 +19,12 @@
     border: none;
 }
 
+.habit__special {
+    @extend .habit;
+    background-color: $off-black;
+    border: none;
+}
+
 .habit__text {
     color: white;
     font-weight: 500;

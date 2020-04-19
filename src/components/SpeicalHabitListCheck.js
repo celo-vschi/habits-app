@@ -1,8 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import HabitListCheckItem from './HabitListCheckItem';
-import HabitListCheckTitle from './HabitListCheckTitle';
+import SpecialHabitListCheckItem from './SpecialHabitListCheckItem';
 import * as utils from '../utils/utils';
 
 export const SpecialHabitListCheck = (props) => (
@@ -15,24 +14,15 @@ export const SpecialHabitListCheck = (props) => (
                 </div>
             </div>
             <div className="widget">
-                {props.habits.map((habit, i) => {
-                    return habit.name.includes('_') ? (
-                        <HabitListCheckTitle
-                            key={habit.id}
-                            {...habit}
-                            date={props.date}
-                            props={props}
-                        />
-                    ) : (
-                            <HabitListCheckItem
-                                key={habit.id}
-                                last={props.habits.length === i + 1}
-                                {...habit}
-                                date={props.date}
-                                props={props}
-                            />
-                        )
-                })}
+                {props.habits.map((habit, i) => (
+                    <SpecialHabitListCheckItem
+                        key={habit.id}
+                        last={props.habits.length === i + 1}
+                        {...habit}
+                        date={props.date}
+                        props={props}
+                    />
+                ))}
             </div>
         </div>
     ) : null

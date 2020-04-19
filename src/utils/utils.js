@@ -54,7 +54,7 @@ export const getCalendarData = (habits) => {
             const allHabits = habitsForDate.length;
 
             const checkingDayDate = checkingDay.toDate();
-            const finishedHabits = habitsDone(habits, date);
+            const finishedHabits = habitsDone(habitsForDate, date);
             if (finishedHabits === allHabits) {
                 green.push(checkingDayDate);
             } else {

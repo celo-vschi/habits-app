@@ -90,7 +90,7 @@ export default class HabitForm extends React.Component {
                             </div>
 
                             <div className="widget-input">
-                                <label className="checkbox-container__special">
+                                <label className="checkbox-container__form">
                                     <h3>Special Habit</h3>
                                     <input
                                         type="checkbox"
@@ -98,7 +98,7 @@ export default class HabitForm extends React.Component {
                                         value={this.state.specialHabit}
                                         onChange={this.handleSpecialDayCheckboxChange}
                                     />
-                                    <span className="checkbox-checkmark__special"></span>
+                                    <span className="checkbox-checkmark__form"></span>
 
                                 </label>
                             </div>

@@ -99,14 +99,23 @@
   }
   /** END of TITLE CHECKBOX **/
 
+
   /**START of SPECIAL HABIT CHECKBOX **/
-  .checkbox-container__special {
+  .checkbox-checkmark__special {
+    @extend .checkbox-checkmark;
+    margin-top: 0px;
+  }
+  /**END of SPECIAL HABIT CHECKBOX **/
+
+
+  /**START of FORM HABIT CHECKBOX **/
+  .checkbox-container__form {
     @extend .checkbox-container;
     padding: 0px;
   }
-  .checkbox-checkmark__special {
+  .checkbox-checkmark__form {
     @extend .checkbox-checkmark;
     top: 10px;
     left: 209px;
   }
-  /**START of SPECIAL HABIT CHECKBOX **/
+  /**END of FORM HABIT CHECKBOX **/

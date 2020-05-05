@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import * as utils from '../utils/utils';
 import { AiFillCaretLeft, AiFillCaretRight } from "react-icons/ai";
 import { incrementDate, decrementDate } from '../actions/filters';
-import HabitListCheck from './HabitListCheck';
+import NotDoneHabitListCheck from './NotDoneHabitListCheck';
+import DoneHabitListCheck from './DoneHabitListCheck';
 import SpecialHabitListCheck from './SpeicalHabitListCheck';
 
 export class HabitsSummary extends React.Component {
@@ -27,7 +28,8 @@ export class HabitsSummary extends React.Component {
                         </button>
                     </div>
                 </div>
-                <HabitListCheck />
+                <NotDoneHabitListCheck />
+                <DoneHabitListCheck />
                 <SpecialHabitListCheck />
             </div>
         )

@@ -40,7 +40,13 @@ export class HabitListCheckItem extends React.Component {
     }
 
     render() {
-        const showHalfCheck = !this.props.done && this.props.date == moment().format('YYYY-MM-DD');
+        const format = 'YYYY-MM-DD';
+        const date = this.props.date;
+        const now = moment();
+
+        const showHalfCheck = !this.props.done &&
+            (date == now.format(format) || date == now.subtract(1, 'days').format(format));
+
         return (
             <div className={this.props.last ? "habit habit__last" : "habit"}>
                 <label className="checkbox-container">

@@ -43,6 +43,8 @@
 }
 
 .habit__right {
+    align-items: center;
+    display: flex;
     padding-right: $m-size;
     .button--link {
         align-items: center;

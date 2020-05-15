@@ -1,0 +1,10 @@
+.habit__note {
+    // color: $light-blue;
+    cursor: pointer;
+    margin: 0;
+    padding-right: $l-size;
+}
+
+.habit__note:hover {
+    color: $off-black;
+}

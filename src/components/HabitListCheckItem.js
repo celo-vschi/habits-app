@@ -1,10 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { startMarkHabit, startEditHabit } from '../actions/habits';
+import { AddNoteModal } from './AddNoteModal';
 import * as utils from '../utils/utils';
 import moment from 'moment';
 
 export class HabitListCheckItem extends React.Component {
+
+    state = {
+        habitIdToBeAddedNoteTo: undefined
+    };
+
+    handleClearModalData = () => {
+        this.setState(() => ({ habitIdToBeAddedNoteTo: undefined }));
+    };
+
+    setModalData = () => {
+        this.setState(() => ({ habitIdToBeAddedNoteTo: this.props.id }));
+    }
+
     markDone = () => {
         const id = this.props.id;
         const date = this.props.date;
@@ -28,6 +42,14 @@ export class HabitListCheckItem extends React.Component {
             halfDone: halfDoneValue
         }
         this.props.startEditHabit(this.props.id, halfDone);
+    }
+
+    handleAddNoteToHabit = (value) => {
+        const note = {
+            note: value
+        };
+        this.props.startEditHabit(this.props.id, note);
+        this.handleClearModalData();
     }
 
     handleChange = (e) => {
@@ -59,6 +81,7 @@ export class HabitListCheckItem extends React.Component {
                     <span className="checkbox-checkmark"></span>
                     <p className="habit__text">
                         {this.props.done ? (<s>{this.props.name}</s>) : (this.props.name)}
+                        {this.props.note && ` - ${this.props.note}` }
                     </p>
                     <span className="habit__subtext">
                         {this.props.streak}
@@ -68,12 +91,23 @@ export class HabitListCheckItem extends React.Component {
                 {showHalfCheck &&
                     <div className="habit__right">
                         <p
+                            className="habit__note"
+                            onClick={this.setModalData}>
+                            o
+                        </p>
+                        <p
                             className={this.props.halfDone ? "half-check__checked" : "half-check"}
                             onClick={this.markHalfDone}>
                             x
                     </p>
                     </div>
                 }
+
+                <AddNoteModal
+                    habitIdToBeAddedNoteTo={this.state.habitIdToBeAddedNoteTo}
+                    handleClearModalData={this.handleClearModalData}
+                    handleAddNoteToHabit={this.handleAddNoteToHabit}
+                />
             </div>
         );
     }

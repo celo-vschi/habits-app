@@ -25,7 +25,7 @@ export class AddNoteModal extends React.Component {
             ariaHideApp={false}
             isOpen={!!this.props.habitIdToBeAddedNoteTo}
             onRequestClose={this.props.handleClearModalData}
-            contentLabel="Delete habit"
+            contentLabel="Note"
             closeTimeoutMS={200}
             className="modal"
         >

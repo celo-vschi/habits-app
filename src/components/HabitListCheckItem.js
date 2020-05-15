@@ -79,36 +79,37 @@ export class HabitListCheckItem extends React.Component {
                         onChange={this.handleChange}
                     />
                     <span className="checkbox-checkmark"></span>
-                    <p className="habit__text">
-                        {this.props.done ? (<s>{this.props.name}</s>) : (this.props.name)}
-                        {this.props.note && ` - ${this.props.note}` }
-                    </p>
+                    <div className="habit-name-container" >
+                        <p className="habit__text">
+                            {this.props.done ? (<s>{this.props.name}</s>) : (this.props.name)}
+                        </p >
+                        <p className="habit__note">
+                            {this.props.note}
+                        </p>
+                    </div>
                     <span className="habit__subtext">
                         {this.props.streak}
                     </span>
                 </label>
 
-                {showHalfCheck &&
-                    <div className="habit__right">
-                        <p
-                            className="habit__note"
-                            onClick={this.setModalData}>
-                            o
-                        </p>
+
+                <div className="habit__right">
+                    <p className="note" onClick={this.setModalData}>o</p>
+                    {
+                        showHalfCheck &&
                         <p
                             className={this.props.halfDone ? "half-check__checked" : "half-check"}
-                            onClick={this.markHalfDone}>
-                            x
-                    </p>
-                    </div>
-                }
+                            onClick={this.markHalfDone}>x</p>
+                    }
+                </div>
 
                 <AddNoteModal
                     habitIdToBeAddedNoteTo={this.state.habitIdToBeAddedNoteTo}
                     handleClearModalData={this.handleClearModalData}
                     handleAddNoteToHabit={this.handleAddNoteToHabit}
+                    note={this.props.note}
                 />
-            </div>
+            </div >
         );
     }
 }

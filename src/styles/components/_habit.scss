@@ -35,6 +35,13 @@
     padding-right: $l-size;
 }
 
+.habit__note {
+    @extend .habit__text;
+    color: $off-white;
+    font-weight: 300;
+    font-size: 1.6rem;
+}
+
 .habit__subtext {
     color: $off-white;
     font-weight: 300;
@@ -65,6 +72,11 @@
     input {
         @extend .habit-input;
     }
+}
+
+.habit-name-container {
+    align-items: center;
+    display: flex;
 }
 
 .habit-ordering {

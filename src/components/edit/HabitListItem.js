@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FiTrendingUp } from "react-icons/fi";
 import * as utils from '../../utils/utils';
 
 export default class HabitListItem extends React.Component {
@@ -22,6 +23,9 @@ export default class HabitListItem extends React.Component {
                     <span className="habit__subtext">from {startingDate}</span>
                 </Link>
                 <div className="habit__right">
+                    <p className="progress">
+                        <FiTrendingUp />
+                    </p>
                     <button onClick={this.setModalDataInternal} className="button--link">Remove Habit</button>
                 </div>
             </div>

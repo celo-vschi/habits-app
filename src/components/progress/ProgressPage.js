@@ -6,11 +6,13 @@ import ProgressSummary from './ProgressSummary';
 export default class ProgressPage extends React.Component {
 
     render() {
+        const habitId = this.props.match.params.id;
         return (
             <div className="content-container dashboard-container">
-                <ProgressSummary />
+                <ProgressSummary habitId={habitId} />
                 <HabitDayPicker />
             </div>
         );
     }
+
 }

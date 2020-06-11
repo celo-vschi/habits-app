@@ -4,7 +4,6 @@ import * as utils from '../../utils/utils';
 
 export class ProgressSummary extends React.Component {
     render() {
-        console.log(this.props.habits, this.props.date);
         return (
             <div className="dashboard-item__left">
                 <div className="widget-header">
@@ -40,10 +39,11 @@ export class ProgressSummary extends React.Component {
     }
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, props) => {
+    console.log(props.habitId);
     return {
         habits: utils.habitsForDay(state.habits, state.filters),
-        date: state.filters.date
+        date: state.filters.date,
     };
 };
 

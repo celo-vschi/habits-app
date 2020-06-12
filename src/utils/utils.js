@@ -150,6 +150,23 @@ export const getDailySummary = (habits, date) => {
     return `${finished}/${habitsForDate.length}`;
 }
 
+export const getHabitProgress = (habitId, habits) => {
+    let name;
+    habits.forEach((habit) => {
+        if(habit.id === habitId) {
+            name = habit.name;
+        }
+    });
+    
+    return {
+        name,
+        total: 210,
+        bestStreak: 21,
+        currentStreak: 14,
+        completion: 0.15
+    }
+}
+
 const habitsDone = (habits, date) => {
     let habitsDone = 0
     habits.forEach((habit) => {

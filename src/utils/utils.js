@@ -153,11 +153,11 @@ export const getDailySummary = (habits, date) => {
 export const getHabitProgress = (habitId, habits) => {
     let name;
     habits.forEach((habit) => {
-        if(habit.id === habitId) {
+        if (habit.id === habitId) {
             name = habit.name;
         }
     });
-    
+
     return {
         name,
         total: 210,
@@ -182,39 +182,44 @@ const habitDone = (habit, date) => (
 );
 
 export const getStreakText = (habits, id) => {
+    const now = moment();
+    const streak = getStreak(habits, id, now);
+    return getStreakFormattedText(streak);
+}
+
+const getStreak = (habits, id, date) => {
     let streak = 0;
     habits.forEach((habit) => {
 
         if (habit.id === id) {
             const startingDate = moment(habit.startingDate);
-            let now = moment();
-            let date = now.format(PATTERN);
-            if (habitDone(habit, date)) {
-                while (habitDone(habit, date) && startingDate.isSameOrBefore(now)) {
+            let formattedDate = date.format(PATTERN);
+            if (habitDone(habit, formattedDate)) {
+                while (habitDone(habit, formattedDate) && startingDate.isSameOrBefore(date)) {
                     streak++;
-                    now.subtract(1, 'days');
-                    date = now.format(PATTERN);
+                    date.subtract(1, 'days');
+                    formattedDate = date.format(PATTERN);
                 }
             } else {
-                now.subtract(1, 'days');
-                date = now.format(PATTERN);
-                if (habitDone(habit, date)) {
-                    while (habitDone(habit, date) && startingDate.isSameOrBefore(now)) {
+                date.subtract(1, 'days');
+                formattedDate = date.format(PATTERN);
+                if (habitDone(habit, formattedDate)) {
+                    while (habitDone(habit, formattedDate) && startingDate.isSameOrBefore(date)) {
                         streak++;
-                        now.subtract(1, 'days');
-                        date = now.format(PATTERN);
+                        date.subtract(1, 'days');
+                        formattedDate = date.format(PATTERN);
                     }
                 } else {
-                    while (!habitDone(habit, date) && startingDate.isSameOrBefore(now)) {
+                    while (!habitDone(habit, formattedDate) && startingDate.isSameOrBefore(date)) {
                         streak--;
-                        now.subtract(1, 'days');
-                        date = now.format(PATTERN);
+                        date.subtract(1, 'days');
+                        formattedDate = date.format(PATTERN);
                     }
                 }
             }
         }
     });
-    return getStreakFormattedText(streak);
+    return streak;
 }
 
 const habitStarted = (habit) => {

@@ -150,23 +150,6 @@ export const getDailySummary = (habits, date) => {
     return `${finished}/${habitsForDate.length}`;
 }
 
-export const getHabitProgress = (habitId, habits) => {
-    let name;
-    habits.forEach((habit) => {
-        if (habit.id === habitId) {
-            name = habit.name;
-        }
-    });
-
-    return {
-        name,
-        total: 210,
-        bestStreak: 21,
-        currentStreak: 14,
-        completion: 0.15
-    }
-}
-
 const habitsDone = (habits, date) => {
     let habitsDone = 0
     habits.forEach((habit) => {
@@ -180,6 +163,50 @@ const habitsDone = (habits, date) => {
 const habitDone = (habit, date) => (
     habit.progress && habit.progress[date] && habit.progress[date].done === true
 );
+
+export const getHabitProgress = (habitId, habits) => {
+    let name;
+    let currentStreak;
+    let bestStreak;
+    let total = 0;
+    let completion;
+
+    let days;
+
+    habits.forEach((habit) => {
+        if (habit.id === habitId) {
+            name = habit.name;
+
+            const startingDate = moment(habit.startingDate);
+            let date = moment();
+            days = date.diff(startingDate, 'days');
+            let streak = getStreak(habits, habitId, moment(date));
+            currentStreak = streak;
+            bestStreak = streak;
+
+            do {
+                streak = getStreak(habits, habitId, date);
+
+                if (streak > bestStreak) {
+                    bestStreak = streak;
+                }
+                if (streak < 0) {
+                    streak = Math.abs(streak);
+                } else {
+                    total += streak;
+                }
+            } while (!date.isSameOrBefore(startingDate));
+        }
+    });
+    completion = (total / days * 100).toFixed();
+    return {
+        name,
+        total,
+        bestStreak,
+        currentStreak,
+        completion
+    }
+}
 
 export const getStreakText = (habits, id) => {
     const now = moment();

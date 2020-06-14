@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import * as utils from '../../utils/utils';
 
 export class ProgressSummary extends React.Component {
@@ -7,7 +8,11 @@ export class ProgressSummary extends React.Component {
         return (
             <div className="dashboard-item__left">
                 <div className="widget-header">
-                    <div className="widget-header-item"></div>
+                    <div className="widget-header-item">
+                        <Link to="/edit">
+                            <button className="button">Habit List</button>
+                        </Link>
+                    </div>
                     <div className="widget-header-item">
                         <h3>Progress @ <span> {this.props.progress.name}</span></h3>
                     </div>
@@ -20,7 +25,7 @@ export class ProgressSummary extends React.Component {
                     </div>
                     <div className={"habit"}>
                         <p className="habit__text">
-                            Completion rate: {this.props.progress.completion * 100}%
+                            Completion rate: {this.props.progress.completion}%
                         </p>
                     </div>
                     <div className={"habit"}>

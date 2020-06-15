@@ -47,8 +47,6 @@ export class ProgressSummary extends React.Component {
 const mapStateToProps = (state, props) => {
     return {
         progress: utils.getHabitProgress(props.habitId, state.habits),
-        habits: utils.habitsForDay(state.habits, state.filters),
-        date: state.filters.date,
     };
 };
 

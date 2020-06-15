@@ -20,6 +20,34 @@ const isSameMonthAndYear = (d1, d2) => (
     d1.getMonth() == d2.getMonth() && d1.getFullYear() == d2.getFullYear()
 )
 
+export const getCalendarProgressData = (habits, habitId) => {
+    let green = [];
+    let red = [];
+
+    habits.forEach((habit) => {
+        if (habit.id === habitId) {
+            const startingDate = moment(habit.startingDate);
+            let checkingDay = moment().subtract(1, 'days');
+
+            while (!checkingDay.isSameOrBefore(startingDate)) {
+                let date = checkingDay.format(PATTERN);
+                if (habitDone(habit, date)) {
+                    green.push(checkingDay.toDate());
+                } else {
+                    red.push(checkingDay.toDate());
+                }
+
+                checkingDay = checkingDay.subtract(1, 'days');
+            }
+        }
+    });
+
+    green = usePeriodsForCalendarData(green);
+    red = usePeriodsForCalendarData(red);
+    const calendarData = {green, red};
+    return calendarData;
+}
+
 export const getCalendarData = (habits) => {
     let green = [];
     let orange = [];
@@ -199,6 +227,7 @@ export const getHabitProgress = (habitId, habits) => {
         }
     });
     completion = (total / days * 100).toFixed();
+
     return {
         name,
         total,

@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import HabitDayPicker from '../HabitDayPicker';
+import ProgressCalendar from './ProgressCalendar';
 import ProgressSummary from './ProgressSummary';
 
 export default class ProgressPage extends React.Component {
@@ -10,7 +9,7 @@ export default class ProgressPage extends React.Component {
         return (
             <div className="content-container dashboard-container">
                 <ProgressSummary habitId={habitId} />
-                <HabitDayPicker />
+                <ProgressCalendar habitId={habitId} />
             </div>
         );
     }

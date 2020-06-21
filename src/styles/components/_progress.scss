@@ -17,7 +17,6 @@
 .progress-text {
     color: $off-white;
     font-size: $font-size-large;
-    padding-right:15px;
 }
 
 .progress-value {
@@ -29,4 +28,10 @@
 .progress-icon {
     color: $purple;
     padding-right: 25px;
+}
+
+.progress-container {
+    align-items: center;
+    display: flex;
+    width: 220px;
 }

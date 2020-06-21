@@ -23,32 +23,40 @@ export class ProgressSummary extends React.Component {
 
                     <div className="habit">
                         <div className="progress">
-                            <p className="progress-icon"><FaCheck size='25' /></p>
-                            <p className="progress-text">Total times done</p>
+                            <div className="progress-container">
+                                <p className="progress-icon"><FaCheck size='25' /></p>
+                                <p className="progress-text">Total times done</p>
+                            </div>
                             <p className="progress-value">{this.props.progress.total}</p>
                         </div>
                     </div>
 
                     <div className="habit">
                         <div className="progress">
-                            <p className="progress-icon"><FaChartBar size='25' /></p>
-                            <p className="progress-text">Completion rate</p>
+                            <div className="progress-container">
+                                <p className="progress-icon"><FaChartBar size='25' /></p>
+                                <p className="progress-text">Completion rate</p>
+                            </div>
                             <p className="progress-value">{this.props.progress.completion}%</p>
                         </div>
                     </div>
 
                     <div className="habit">
                         <div className="progress">
-                            <p className="progress-icon"><GiRoundStar size='25' /></p>
-                            <p className="progress-text">Current streak</p>
+                            <div className="progress-container">
+                                <p className="progress-icon"><GiRoundStar size='25' /></p>
+                                <p className="progress-text">Current streak</p>
+                            </div>
                             <p className="progress-value">{this.props.progress.currentStreak}</p>
                         </div>
                     </div>
 
                     <div className="habit habit__last">
                         <div className="progress">
-                            <p className="progress-icon"><GiTrophyCup size='25' /></p>
-                            <p className="progress-text">Best streak</p>
+                            <div className="progress-container">
+                                <p className="progress-icon"><GiTrophyCup size='25' /></p>
+                                <p className="progress-text">Best streak</p>
+                            </div>
                             <p className="progress-value">{this.props.progress.bestStreak}</p>
                         </div>
                     </div>

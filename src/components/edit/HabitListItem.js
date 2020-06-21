@@ -25,7 +25,7 @@ export default class HabitListItem extends React.Component {
                 <div className="habit__right">
                     {!special &&
                         <Link to={`/progress/${id}`}>
-                            <p className="progress">
+                            <p className="progress-button">
                                 <FiTrendingUp />
                             </p>
                         </Link>

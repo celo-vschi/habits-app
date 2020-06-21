@@ -1,6 +1,32 @@
-.progress {
+.progress-button {
     color: $off-white;
     cursor: pointer;
     margin: 0;
     margin-right: $l-size;
+}
+
+.progress {
+    padding-left: $m-size;
+    display: flex;
+    align-items: center;
+    * {
+        margin: 0;
+    }
+}
+
+.progress-text {
+    color: $off-white;
+    font-size: $font-size-large;
+    padding-right:15px;
+}
+
+.progress-value {
+    color:white;
+    font-size: $font-size-large;
+    font-weight: 700;
+}
+
+.progress-icon {
+    color: $purple;
+    padding-right: 25px;
 }

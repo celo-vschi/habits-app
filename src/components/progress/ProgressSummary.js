@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import * as utils from '../../utils/utils';
+import { FaCheck, FaChartBar } from "react-icons/fa";
+import { GiTrophyCup, GiRoundStar } from "react-icons/gi";
 
 export class ProgressSummary extends React.Component {
     render() {
@@ -18,28 +20,41 @@ export class ProgressSummary extends React.Component {
                     </div>
                 </div>
                 <div className="widget">
-                    <div className={"habit"}>
-                        <p className="habit__text">
-                            Total times done: {this.props.progress.total}
-                        </p>
+
+                    <div className="habit">
+                        <div className="progress">
+                            <p className="progress-icon"><FaCheck size='25' /></p>
+                            <p className="progress-text">Total times done</p>
+                            <p className="progress-value">{this.props.progress.total}</p>
+                        </div>
                     </div>
-                    <div className={"habit"}>
-                        <p className="habit__text">
-                            Completion rate: {this.props.progress.completion}%
-                        </p>
+
+                    <div className="habit">
+                        <div className="progress">
+                            <p className="progress-icon"><FaChartBar size='25' /></p>
+                            <p className="progress-text">Completion rate</p>
+                            <p className="progress-value">{this.props.progress.completion}%</p>
+                        </div>
                     </div>
-                    <div className={"habit"}>
-                        <p className="habit__text">
-                            Current streak: {this.props.progress.currentStreak}
-                        </p>
+
+                    <div className="habit">
+                        <div className="progress">
+                            <p className="progress-icon"><GiRoundStar size='25' /></p>
+                            <p className="progress-text">Current streak</p>
+                            <p className="progress-value">{this.props.progress.currentStreak}</p>
+                        </div>
                     </div>
-                    <div className={"habit habit__last"}>
-                        <p className="habit__text">
-                            Best streak: {this.props.progress.bestStreak}
-                        </p>
+
+                    <div className="habit habit__last">
+                        <div className="progress">
+                            <p className="progress-icon"><GiTrophyCup size='25' /></p>
+                            <p className="progress-text">Best streak</p>
+                            <p className="progress-value">{this.props.progress.bestStreak}</p>
+                        </div>
                     </div>
+
                 </div>
-            </div>
+            </div >
         )
     }
 };

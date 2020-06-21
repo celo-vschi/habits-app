@@ -44,7 +44,7 @@ export const getCalendarProgressData = (habits, habitId) => {
 
     green = usePeriodsForCalendarData(green);
     red = usePeriodsForCalendarData(red);
-    const calendarData = {green, red};
+    const calendarData = { green, red };
     return calendarData;
 }
 
@@ -137,34 +137,38 @@ const usePeriodsForCalendarData = (array) => {
     const periodMiddle = [];
     const periodEnd = [];
 
-    let startFound = false;
-    let lastDate = old[0];
-    old.forEach((date, i) => {
-        if (i != 0) {
-            if (isNextDay(lastDate, date)) {
-                if (startFound) {
-                    periodMiddle.push(lastDate);
-                } else {
-                    periodStart.push(lastDate);
-                    startFound = true;
-                }
-            } else {
-                if (startFound) {
-                    periodEnd.push(lastDate);
-                    startFound = false;
-                } else {
-                    days.push(lastDate);
-                }
-            } if (i == old.length - 1) {
+    if (old.length == 1) {
+        days.push(old[0]);
+    } else {
+        let startFound = false;
+        let lastDate = old[0];
+        old.forEach((date, i) => {
+            if (i != 0) {
                 if (isNextDay(lastDate, date)) {
-                    periodEnd.push(date);
+                    if (startFound) {
+                        periodMiddle.push(lastDate);
+                    } else {
+                        periodStart.push(lastDate);
+                        startFound = true;
+                    }
                 } else {
-                    days.push(date);
+                    if (startFound) {
+                        periodEnd.push(lastDate);
+                        startFound = false;
+                    } else {
+                        days.push(lastDate);
+                    }
+                } if (i == old.length - 1) {
+                    if (isNextDay(lastDate, date)) {
+                        periodEnd.push(date);
+                    } else {
+                        days.push(date);
+                    }
                 }
             }
-        }
-        lastDate = date;
-    });
+            lastDate = date;
+        });
+    }
     return { days, periodStart, periodMiddle, periodEnd };
 }
 
@@ -209,6 +213,12 @@ export const getHabitProgress = (habitId, habits) => {
             let date = moment();
             days = date.diff(startingDate, 'days');
             let streak = getStreak(habits, habitId, moment(date));
+
+            // taking 'today' into account
+            if (habitDone(habit, date.format(PATTERN))) {
+                days++;
+            }
+
             currentStreak = streak;
             bestStreak = streak;
 
